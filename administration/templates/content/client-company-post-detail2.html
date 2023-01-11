@@ -1,0 +1,302 @@
+{% extends 'content/staff-base2.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<!-- PAGE-HEADER -->
+<div class="page-header">
+    <h1 class="page-title">{{ post.title }} Due: {{ post.deadline }}</h1>
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">{{ post.client }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+        </ol>
+    </div>
+</div>
+<!-- PAGE-HEADER END -->
+
+<div class="row justify-content-center">
+    <div class="col-xl-8 ">
+        <div class="card">
+            {% if img == 1 or img == none %}
+            <img class="d-block w-100 br-5" alt="" src="/media/{{ post.image_1}}" data-bs-holder-rendered="true">
+            {% elif img == 2 %}
+            <img class="d-block w-100 br-5" alt="" src="/media/{{ post.image_2}}" data-bs-holder-rendered="true">
+            {% elif img == 3 %}
+            <img class="d-block w-100 br-5" alt="" src="/media/{{ post.image_3}}" data-bs-holder-rendered="true">
+            {% elif img == 4 %}
+            <img class="d-block w-100 br-5" alt="" src="/media/{{ post.image_4}}" data-bs-holder-rendered="true">
+            {% elif img == 5 %}
+            <img class="d-block w-100 br-5" alt="" src="/media/{{ post.image_5}}" data-bs-holder-rendered="true">
+            {% elif img == 6 %}
+            <img class="d-block w-100 br-5" alt="" src="/media/{{ post.image_6}}" data-bs-holder-rendered="true">
+            {% elif img == 7 %}
+            <img class="d-block w-100 br-5" alt="" src="/media/{{ post.image_7}}" data-bs-holder-rendered="true">
+            {% elif img == 8 %}
+            <img class="d-block w-100 br-5" alt="" src="/media/{{ post.image_8}}" data-bs-holder-rendered="true">
+            {% elif img == 9 %}
+            <img class="d-block w-100 br-5" alt="" src="/media/{{ post.image_9}}" data-bs-holder-rendered="true">
+            {% elif img == 10 %}
+            <img class="d-block w-100 br-5" alt="" src="/media/{{ post.image_10}}" data-bs-holder-rendered="true">
+            
+            {% endif %}
+            
+
+
+            <div class="card-body mx-auto">
+              
+                <ul class="pagination">
+                    {% if post.image_1 %}
+                    <li class="page-item {% if img == 1 %}active{% endif %}"><a class="page-link" href="{% url 'post-detail' post.slug 1 %}">1</a></li>
+                    {% endif %}
+                    {% if post.image_2%}
+                    <li class="page-item {% if img == 2 %}active{% endif %}"><a class="page-link" href="{% url 'post-detail' post.slug 2 %}">2</a></li>
+                    {% endif %}
+                    {% if post.image_3 %}
+                    <li class="page-item {% if img == 3 %}active{% endif %}"><a class="page-link" href="{% url 'post-detail' post.slug 1 %}">3</a></li>
+                    {% endif %}
+                    {% if post.image_4 %}
+                    <li class="page-item {% if img == 4 %}active{% endif %}"><a class="page-link" href="{% url 'post-detail' post.slug 1 %}">4</a></li>
+                    {% endif %}
+                    {% if post.image_5 %}
+                    <li class="page-item {% if img == 5 %}active{% endif %}"><a class="page-link" href="{% url 'post-detail' post.slug 1 %}">5</a></li>
+                    {% endif %}
+                    {% if post.image_6 %}
+                    <li class="page-item {% if img == 6 %}active{% endif %}"><a class="page-link" href="{% url 'post-detail' post.slug 1 %}">6</a></li>
+                    {% endif %}
+                    {% if post.image_7 %}
+                    <li class="page-item {% if img == 7 %}active{% endif %}"><a class="page-link" href="{% url 'post-detail' post.slug 1 %}">7</a></li>
+                    {% endif %}
+                    {% if post.image_8 %}
+                    <li class="page-item {% if img == 8 %}active{% endif %}"><a class="page-link" href="{% url 'post-detail' post.slug 1 %}">8</a></li>
+                    {% endif %}
+                    {% if post.image_9 %}
+                    <li class="page-item {% if img == 9 %}active{% endif %}"><a class="page-link" href="{% url 'post-detail' post.slug 1 %}">9</a></li>
+                    {% endif %}
+                    {% if post.image_10 %}
+                    <li class="page-item {% if img == 10 %}active{% endif %}"><a class="page-link" href="{% url 'post-detail' post.slug 1 %}">10</a></li>
+                    {% endif %}
+                </ul>
+           
+            </div>
+            <div class="card-body">
+                <h3><a href="javascript:void(0)"> {{ post.title }}</a></h3>
+                <p class="card-text">{{ post.content }}</p>
+            </div>
+            <div class="card-body">
+                <div class="d-md-flex">
+                    <a href="javascript:void(0);" class="d-flex me-4 mb-2"><i class="fe fe-calendar fs-16 me-1 p-3 bg-secondary-transparent text-secondary bradius"></i>
+                        <div class="mt-0 mt-3 ms-1 text-muted font-weight-semibold">{{ post.deadline }}</div>
+                    </a>
+                    <a href="profile.html" class="d-flex mb-2"><i class="fe fe-user fs-16 me-1 p-3 bg-primary-transparent text-primary bradius"></i>
+                        <div class="mt-0 mt-3 ms-1 text-muted font-weight-semibold">{{ post.staff.user.first_name }} {{ post.staff.user.last_name }}</div>
+                    </a>
+                    <div class="ms-auto">
+                        <a href="javascript:void(0);" class="d-flex mb-2"><i class="fe fe-message-square fs-16 me-1 p-3 bg-success-transparent text-success bradius"></i>
+                            <div class="mt-0 mt-3 ms-1 text-muted font-weight-semibold">{{ comments.count }} Comments</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            {% if comments %}
+            <div class="card-header">
+                <div class="card-title">Feedback</div>
+            </div>
+            {% endif %}
+            <div class="card-body pb-0">
+                {% for comment in comments %}
+                {% if comment.staff_comment == False %}
+                <div class="media mb-5 overflow-visible">
+                    <div class="me-3">
+                        {% if comment.user.staff %}
+                         <img class="media-object rounded-circle thumb-sm" alt="64x64" src="/media/{{ comment.user.staff.profile_image}}">
+                        {% else %}
+                         <img class="media-object rounded-circle thumb-sm" alt="64x64" src="/media/{{ comment.user.client.company.company_logo }}">
+                        {% endif %}
+                    </div>
+                    <div class="media-body overflow-visible">
+                        <div class="border mb-5 p-4 br-5">
+                            <nav class="nav float-end">
+                                <div class="dropdown">
+                                    <a class="nav-link text-muted fs-16 p-0 ps-4" href="javascript:;" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fe fe-more-vertical"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-end" style="">
+                                        <a class="dropdown-item" href="javascript:void(0)"><i class="fe fe-edit mx-1"></i> Edit</a>
+                                        <a class="dropdown-item" href="javascript:void(0)"><i class="fe fe-corner-up-left mx-1"></i> Reply</a>
+                                        <a class="dropdown-item" href="javascript:void(0)"><i class="fe fe-flag mx-1"></i> Report Abuse</a>
+                                        <a class="dropdown-item" href="javascript:void(0)"><i class="fe fe-trash-2 mx-1"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </nav>
+                            <h5 class="mt-0">{{ comment.user.first_name }} {{ comment.user.last_name }}</h5>
+                            <p class="font-13 text-muted">{{ comment.comment }} <br /><span class="small">{{ comment.date_created }}</span></p>
+                            {% if comment.user.staff %}
+                            <span class="badge btn-primary-light rounded-pill py-2 px-3"><i class="fe fe-briefcase me-1"></i>{{ comment.user.staff.department }}</span>
+                            {% else %}
+                            <span class="badge btn-danger-light rounded-pill py-2 px-3"><i class="fe fe-briefcase me-1"></i>client</span>
+                            {% endif %}
+
+                            <!--<span class="reply" id="3">
+                                <a href="javascript:;"><span class="badge btn-primary-light rounded-pill py-2 px-3"><i class="fe fe-corner-up-left mx-1"></i>Reply</span></a>
+                            </span>-->
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <div class="col-lg-12 mb-4 d-flex justify-content-center ">
+                    <button type="button" class="btn btn-primary btn-rounded  waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#comment-modal" data-bs-whatever="comment"><i class="fa fa-comment" data-bs-toggle="tooltip" title="Add Feedback for {{ post.title }}"></i> Add Feedback</button>
+            </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    <!--<div class="col-xl-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="input-group">
+                    <input type="text" class="form-control border-end-0" placeholder="Search ...">
+                    <button class="btn input-group-text bg-transparent border-start-0 text-muted">
+                            <i class="fe fe-search" aria-hidden="true"></i>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Categories</div>
+            </div>
+            <div class="card-body">
+                <ul class="list-group blog-list">
+                    <li class="list-group-item border-0 p-0"><a href="javascript:void(0)"><i class="fe fe-chevron-right"></i> Development</a> <span class="product-label">22</span> </li>
+                    <li class="list-group-item border-0 p-0"><a href="javascript:void(0)"><i class="fe fe-chevron-right"></i> Web Design</a> <span class="product-label">15</span> </li>
+                    <li class="list-group-item border-0 p-0"><a href="javascript:void(0)"><i class="fe fe-chevron-right"></i> Technology</a> <span class="product-label">10</span> </li>
+                    <li class="list-group-item border-0 p-0"><a href="javascript:void(0)"><i class="fe fe-chevron-right"></i> Sports</a> <span class="product-label">88</span> </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Professional Blog Writers</div>
+            </div>
+            <div class="card-body">
+                <div class="">
+                    <div class="d-flex overflow-visible">
+                        <img class="avatar bradius avatar-xl me-3" src="{% static 'assets/images/users/1.jpg' %}" alt="avatar-img">
+                        <div class="media-body valign-middle">
+                            <a href="profile.html" class="fw-semibold text-dark">Simon Sais</a>
+                            <p class="text-muted mb-0">There are many variations of passages of Lorem Ipsum available ...</p>
+                        </div>
+                    </div>
+                    <div class="d-flex overflow-visible mt-5">
+                        <img class="avatar bradius avatar-xl me-3" src="{% static 'assets/images/users/3.jpg' %}" alt="avatar-img">
+                        <div class="media-body valign-middle">
+                            <a href="profile.html" class="fw-semibold text-dark">Cherry Blossom</a>
+                            <p class="text-muted mb-0">There are many variations of passages of Lorem Ipsum available ...</p>
+                        </div>
+                    </div>
+                    <div class="d-flex overflow-visible mt-5">
+                        <img class="avatar bradius avatar-xl me-3" src="{% static 'assets/images/users/5.jpg' %}" alt="avatar-img">
+                        <div class="media-body valign-middle">
+                            <a href="profile.html" class="fw-semibold text-dark">Ivan Notheridiya</a>
+                            <p class="text-muted mb-0">There are many variations of passages of Lorem Ipsum available ...</p>
+                        </div>
+                    </div>
+                    <div class="d-flex overflow-visible mt-5">
+                        <img class="avatar bradius avatar-xl me-3" src="{% static 'assets/images/users/15.jpg' %}" alt="avatar-img">
+                        <div class="media-body valign-middle">
+                            <a href="profile.html" class="fw-semibold text-dark">Manny Jah</a>
+                            <p class="text-muted mb-0">There are many variations of passages of Lorem Ipsum available ...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Recent Posts</div>
+            </div>
+            <div class="card-body">
+                <div class="">
+                    <div class="d-flex overflow-visible">
+                        <a href="blog-details.html" class="card-aside-column br-5 cover-image" data-bs-image-src="{% static 'assets/images/media/19.jpg' %}" style="background: url(&quot;{% static 'assets/images/media/19.jpg' %}&quot;) center top;"></a>
+                        <div class="ps-3 flex-column">
+                            <h4><a href="blog-details.html">Generator on the Internet..</a></h4>
+                            <div class="text-muted">Excepteur sint occaecat cupidatat non proident, accusantium sunt in culpa qui officia deserunt mollit anim id est laborum....</div>
+                        </div>
+                    </div>
+                    <div class="d-flex overflow-visible mt-5">
+                        <a href="blog-details.html" class="card-aside-column br-5 cover-image" data-bs-image-src="{% static 'assets/images/media/22.jpg' %}" style="background: url(&quot;{% static 'assets/images/media/19.jpg' %}&quot;) center top;"></a>
+                        <div class="ps-3 flex-column">
+                            <h4><a href="blog-details.html">Voluptatem quia voluptas...</a></h4>
+                            <div class="text-muted">Excepteur sint occaecat cupidatat non proident, accusantium sunt in culpa qui officia deserunt mollit anim id est laborum....</div>
+                        </div>
+                    </div>
+                    <div class="d-flex overflow-visible mt-5">
+                        <a href="blog-details.html" class="card-aside-column br-5 cover-image" data-bs-image-src="{% static 'assets/images/media/12.jpg' %}" style="background: url(&quot;{% static 'assets/images/media/19.jpg' %}&quot;) center top;"></a>
+                        <div class="ps-3 flex-column">
+                            <h4><a href="blog-details.html">Generator on the Internet..</a></h4>
+                            <div class="text-muted">Excepteur sint occaecat cupidatat non proident, accusantium sunt in culpa qui officia deserunt mollit anim id est laborum....</div>
+                        </div>
+                    </div>
+                    <div class="d-flex overflow-visible mt-5">
+                        <a href="blog-details.html" class="card-aside-column br-5 cover-image" data-bs-image-src="{% static 'assets/images/media/25.jpg' %}" style="background: url(&quot;{% static 'assets/images/media/19.jpg' %}&quot;) center top;"></a>
+                        <div class="ps-3 flex-column">
+                            <h4><a href="blog-details.html">Voluptatem quia voluptas...</a></h4>
+                            <div class="text-muted">Excepteur sint occaecat cupidatat non proident, accusantium sunt in culpa qui officia deserunt mollit anim id est laborum....</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Tags</div>
+            </div>
+            <div class="card-body">
+                <div class="tags">
+                    <a href="javascript:void(0)" class="tag">Development</a>
+                    <a href="javascript:void(0)" class="tag">Design</a>
+                    <a href="javascript:void(0)" class="tag">Technology</a>
+                    <a href="javascript:void(0)" class="tag">Popular</a>
+                    <a href="javascript:void(0)" class="tag">Codiegniter</a>
+                    <a href="javascript:void(0)" class="tag">JavaScript</a>
+                    <a href="javascript:void(0)" class="tag">Bootstrap</a>
+                    <a href="javascript:void(0)" class="tag">PHP</a>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</div>
+</div>
+<!-- Comment modal -->
+    <div class="modal fade" id="comment-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-header">
+                    <h6 class="modal-title">Add Comment</h6>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form method="POST">
+                <div class="modal-body">
+                    
+                        {% csrf_token %}
+                        {{ comment_form|crispy }}
+                    
+                  </div>
+                <div class="modal-footer">
+                    <button class="btn ripple btn-success" type="submit">Save</button>
+                    <button class="btn ripple btn-danger" data-bs-dismiss="modal" type="button">Close</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

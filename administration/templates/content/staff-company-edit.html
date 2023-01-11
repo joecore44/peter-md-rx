@@ -1,0 +1,136 @@
+{% extends 'content/staff-base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+
+</style>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    </div>
+    <!-- Content Row -->
+    <div class="row">
+ 
+    
+        <!-- Content Column -->
+        <div class="col-xl-4 col-lg-4 ">
+            <!-- Project Card Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <a href="#" class="btn btn-warning btn-circle btn-sm">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </a> Company
+                       
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <img class="img-account-profile rounded-circle mb-2" src="/media/{{ company.company_logo }}" alt="{{ companycompany_name}}" width="75px"> 
+                            <h5><b>{{ company.company_name }}</b></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>                  
+                                            <th>Content</th>
+                                            <th>Deadline</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                  
+                                        {% for post in posts %}
+                                        <tr onclick="window.location='{% url 'post-detail' post.slug %}';" class="client-table">
+                                            <td>{{ post.title }}</td>
+                                            <td>{{ post.deadline }}</td>
+                                            <td><span class="badge badge-success">{{ post.status }}</span></td>
+                                           
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>                  
+                                            <th>Project Staff</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                  
+                                        {% for follower in followers %}
+                                        <tr onclick="window.location='#';" class="client-table">
+                                            <td>{{ follower.user.first_name }} {{ follower.user.last_name }}</td>
+                                           
+                                        </tr>
+                
+                                        {% endfor %}
+                                 
+                                    </tbody>
+                                </table>
+                                <div>
+                                    <a href="{% url 'delete-company' company.slug %}"><button class="btn btn-outline-danger" type="button"><i class="fas fa-trash"></i></button></a>
+                                    {% if is_following%}
+                                    <a href="{% url 'follow-company' company.slug %}"><button class="btn btn-outline-secondary" type="button"><i class="fas fa-user"></i> Following</button></a>
+                                    {% else %}
+                                    <a href="{% url 'follow-company' company.slug %}"><button class="btn btn-outline-primary" type="button"><i class="fas fa-plus"></i> Follow</button></a>
+                                    {% endif %}
+                                    <a href="{% url 'company-posts' company.slug %}"><button class="btn btn-outline-primary" type="button"><i class="fas fa-calendar"></i> Content</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>    
+
+        <div class="col-xl-8 col-lg-8 ">
+            
+                <!-- Project Card Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            <a href="#" class="btn btn-warning btn-circle btn-sm">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </a>
+                            Details
+                           
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12 mb-4">
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        {{ form|crispy }}
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-outline-primary" type="submit"><i class="fas fa-save"></i> Submit</button>    
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+        </div>
+
+        <!-- End content row-->
+
+    </div>
+    
+</div>
+
+{% endblock content %}

@@ -1,0 +1,187 @@
+{% extends 'content/staff-base2.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<!-- PAGE-HEADER -->
+<div class="page-header">
+    <h1 class="page-title"></h1>
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">{{ post.title }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Revision Timeline</li>
+        </ol>
+    </div>
+</div>
+<!-- PAGE-HEADER END -->
+<!-- Row -->
+<div class="row row-sm">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header border-bottom-0 custom-card-header">
+                <a href="{% url 'post-detail' post.slug %}" title="Go back to {{ post.title }} details"><h6 class="main-content-label mb-0"><i class="fa fa-backward"></i> Back to Post</h6></a>
+            </div>
+            <div class="card-body">
+                <div class="vtimeline">
+                    {% for revision in revisions %}
+                    <div class="timeline-wrapper timeline-wrapper-primary {% if forloop.counter|divisibleby:2 %} {% else %}timeline-inverted{% endif %}">
+                        <div class="avatar avatar-md timeline-badge">
+                            <span class="timeline-icon"><i class="fa fa-paper-plane-o"></i></span>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                {% if revision.image == 1 %}
+                                <img src="/media/{{ post.image_1 }}" class="mb-3 br-5" alt="img">
+                                {% elif revision.image == 2 %}
+                                <img src="/media/{{ post.image_2 }}" class="mb-3 br-5" alt="img">
+                                {% elif revision.image == 3 %}
+                                <img src="/media/{{ post.image_3 }}" class="mb-3 br-5" alt="img">
+                                {% elif revision.image == 4 %}
+                                <img src="/media/{{ post.image_4 }}" class="mb-3 br-5" alt="img">
+                                {% elif revision.image == 5 %}
+                                <img src="/media/{{ post.image_5 }}" class="mb-3 br-5" alt="img">
+                                {% elif revision.image == 6 %}
+                                <img src="/media/{{ post.image_6 }}" class="mb-3 br-5" alt="img">
+                                {% elif revision.image == 7 %}
+                                <img src="/media/{{ post.image_7 }}" class="mb-3 br-5" alt="img">
+                                {% elif revision.image == 8 %}
+                                <img src="/media/{{ post.image_8 }}" class="mb-3 br-5" alt="img">
+                                {% elif revision.image == 9 %}
+                                <img src="/media/{{ post.image_9 }}" class="mb-3 br-5" alt="img">
+                                {% elif revision.image == 10  %}
+                                <img src="/media/{{ post.image_10 }}" class="mb-3 br-5" alt="img">                                {% endif %}
+                            </div>
+                            <div class="timeline-body">
+                                <p>{{ revision.revision }}</p>
+                                <p> <i class="fe fe-image  text-muted me-1"></i> Image {{ revision.image }}</p>
+                            </div>
+                            <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                <i class="fe fe-user  text-muted me-1"></i>
+                                <span>{{ revision.staff.user.first_name }} {{ revision.staff.user.last_name }}</span>
+                                <span class="ms-auto"><i class="fe fe-calendar text-muted mx-1"></i>{{ revision.date_created}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!--<div class="timeline-wrapper timeline-inverted timeline-wrapper-secondary">
+                        <div class="avatar avatar-md timeline-badge">
+                            <span class="timeline-icon"><i class="fa fa-handshake-o"></i></span>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h6 class="timeline-title">Job Meeting</h6>
+                            </div>
+                            <div class="timeline-body">
+                                <p>You have a meeting at Laborator Office Today.</p>
+                            </div>
+                            <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                <i class="fe fe-heart  text-muted me-1"></i>
+                                <span>25</span>
+                                <span class="ms-auto"><i class="fe fe-calendar text-muted mx-1"></i>10th Oct 2020</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-wrapper timeline-wrapper-green">
+                        <div class="avatar avatar-md timeline-badge">
+                            <span class="timeline-icon"><i class="fa fa-plane"></i></span>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h6 class="timeline-title">Arlind Nushi checked in at New York</h6>
+                            </div>
+                            <div class="timeline-body">
+                                <p>Alpha 5 has arrived just over a month after Alpha 4 with some major feature improvements and a boat load of bug fixes.</p>
+                            </div>
+                            <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                <i class="fe fe-heart  text-muted me-1"></i>
+                                <span>19</span>
+                                <span class="ms-auto"><i class="fe fe-calendar text-muted mx-1"></i>5th Oct 2020</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-wrapper timeline-inverted timeline-wrapper-danger">
+                        <div class="avatar avatar-md timeline-badge">
+                            <span class="timeline-icon"><i class="fa fa-file-image-o"></i></span>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h6 class="timeline-title">Eroll Maxhuni uploaded 4 new photos to album Summer Trip</h6>
+                            </div>
+                            <div class="timeline-body">
+                                <p>Pianoforte principles our unaffected not for astonished travelling are particular.</p>
+                                <img src="../assets/images/media/1.jpg" class="mb-3 br-5" alt="img">
+                            </div>
+                            <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                <i class="fe fe-heart  text-muted me-1"></i>
+                                <span>19</span>
+                                <span class="ms-auto"><i class="fe fe-calendar text-muted mx-1"></i>27th Sep 2017</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-wrapper timeline-wrapper-success">
+                        <div class="avatar avatar-md timeline-badge">
+                            <span class="timeline-icon"><i class="fa fa-envelope"></i></span>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h6 class="timeline-title">Support Team sent you an email</h6>
+                            </div>
+                            <div class="timeline-body">
+                                <p>Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo
+                                    ideeli hulu weebly balihoo....</p>
+                                <a class="btn ripple btn-primary text-white mb-3">Read more</a>
+                            </div>
+                            <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                <i class="fe fe-heart  text-muted me-1"></i>
+                                <span>25</span>
+                                <span class="ms-auto"><i class="fe fe-calendar text-muted mx-1"></i>25th Sep 2017</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-wrapper timeline-inverted timeline-wrapper-warning">
+                        <div class="avatar avatar-md timeline-badge">
+                            <span class="timeline-icon"><i class="fa fa-video-camera"></i></span>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h6 class="timeline-title">Mr. Doe shared a video</h6>
+                            </div>
+                            <div class="timeline-body">
+                                <div class="embed-responsive embed-responsive-16by9 mb-3">
+                                    <iframe class="embed-responsive-item br-5" src="https://www.youtube.com/embed/XZmGGAbHqa0?rel=0&amp;controls=0&amp;showinfo=0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                <i class="fe fe-heart  text-muted me-1"></i>
+                                <span>32</span>
+                                <span class="ms-auto"><i class="fe fe-calendar text-muted mx-1"></i>19th Sep 2017</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-wrapper timeline-wrapper-dark">
+                        <div class="avatar avatar-md timeline-badge">
+                            <span class="timeline-icon"><i class="fa fa-user-o"></i></span>
+                        </div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h6 class="timeline-title">Sarah Young accepted your friend request</h6>
+                            </div>
+                            <div class="timeline-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet cupiditate, delectus deserunt doloribus earum eveniet explicabo fuga iste magni maxime</p>
+                            </div>
+                            <div class="timeline-footer d-flex align-items-center flex-wrap">
+                                <i class="fe fe-heart text-muted me-1"></i>
+                                <span>26</span>
+                                <span class="ms-auto"><i class="fe fe-calendar text-muted mx-1"></i>15th Sep 2017</span>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Row -->
+
+
+
+{% endblock content %}
