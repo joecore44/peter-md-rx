@@ -73,3 +73,6 @@ class MedicationOrder(models.Model):
     sharps_container = models.CharField(max_length=25, choices=YES_NO_CHOICES)
     alcohol_prep_boxes = models.CharField(max_length=3, choices=NUMBER_CHOICES)
 
+    def __str__(self):
+        return str(self.patient.first_name)
+

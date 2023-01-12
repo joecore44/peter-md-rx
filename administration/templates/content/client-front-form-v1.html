@@ -1,0 +1,32 @@
+{% extends 'content/client-base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="container-login100">
+    <div class="wrap-login100 p-6">
+        <form class="login100-form validate-form">
+            <div class="text-center mb-4">
+                <img src="{% static 'assets/images/users/21.jpg' %}" alt="lockscreen image" class="avatar avatar-xxl brround mb-2">
+                <h4>{{ patient.first_name }} {{ patient.last_name }}</h4>
+            </div>
+            <div class="card">
+                <div class="modal-body">
+                    {% csrf_token %}
+                      <div class="mb-3">
+                        <div class="form-group">
+                            {{ pc_form|crispy }}
+                            {{ pu_form|crispy }}
+                        </div>
+                      </div>
+                   
+                  </div>
+               
+        <div class="card-footer text-end">
+            <button class="btn ripple btn-success" type="submit">Save</button>
+        </div>
+            </div>
+            
+        </form>
+    </div>
+</div>
+{% endblock content %}

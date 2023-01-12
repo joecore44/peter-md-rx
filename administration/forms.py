@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import Staff, PatientProfile
+from .models import Staff, PatientProfile, MedicationOrder
 
 class StaffCreationForm(UserCreationForm):
 
@@ -42,3 +42,8 @@ class PatientUpdateForm(forms.ModelForm):
             'emergency_contact_relationship',
             'additional_information',
         ]
+class MedicationOrderForm(forms.ModelForm):
+
+    class Meta:
+        model = MedicationOrder
+        fields = '__all__'
