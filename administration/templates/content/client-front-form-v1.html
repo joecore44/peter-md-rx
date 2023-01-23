@@ -2,20 +2,28 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
-<div class="container-login100">
+<div class="container">
     <div class="wrap-login100 p-6">
         <form class="login100-form validate-form">
             <div class="text-center mb-4">
-                <img src="{% static 'assets/images/users/21.jpg' %}" alt="lockscreen image" class="avatar avatar-xxl brround mb-2">
-                <h4>{{ patient.first_name }} {{ patient.last_name }}</h4>
-            </div>
+                <div align="center"><img src="https://peteruncagedmd.com/wp-content/uploads/unnamed-4.png" alt="Peter MD" width="100%" /></div>
+                <div>&nbsp;</div>
+                <h1>{{ patient.first_name }} {{ patient.last_name }}</h1>
+                <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <span class="alert-inner--text">
+                    <p>PLEASE BE AWARE: THIS MEDICATION REFILL FORM IS FOR CURRENT PATIENTS ONLY.</p>
+
+                    <p>If you are set up on recurring payments with Peter MD you are a current patient. if you are not a current patient please contact the office at support@peteruncagedmd.com</p>                      
+                    <p>PLEASE COMPLETE EVERY FIELD BEFORE SUBMITTING THE FORM TO AVOID ANY DELAYS IN THE REFILL PROCESS.
+                    </p>                    
+                </span> </div> 
+                </div>
             <div class="card">
-                <div class="modal-body">
+                <div class="body">
                     {% csrf_token %}
                       <div class="mb-3">
                         <div class="form-group">
                             {{ pc_form|crispy }}
-                            {{ pu_form|crispy }}
+                            
                         </div>
                       </div>
                    
@@ -28,5 +36,965 @@
             
         </form>
     </div>
+    <div>&nbsp;</div>
+    <h1>Order</h1>
+
+    <div class="wrap-login100 p-6">
+        <form class="login100-form validate-form">
+            <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <span class="alert-inner--text">
+                <p>TESTOSTERONE (COVERED IN MONTHLY COST up to 200mg weekly).<p> 
+                    <p>Select N/A if you are not due for testosterone and are only adding extra medications.</p>
+                    <p>Please select needle size for injecting testosterone</p>
+                <p>IF you are on the ENCLOMIPHENE program (sep f/ testosterone program) select enclomiphene. NO SUPPLIES NECESSARY. Select N/A if you are not due for enclomiphene and are only adding extra medications. * *
+                </p>
+                <ul>
+                    <li> - Default IM (intramuscular: into the muscle)- 25g Injecting needle with 20g drawing needle</li>
+                    <li> - Default SUBQ(Subcutaneous: into the fatty tissue)- 30g x 1/2" x 1ml Insulin needle (no drawing needle available for insulin needles)</li>
+                    <li> - Insulin needles can also be used for shallow intramuscular injecting. The main difference is the size of the needle. If you prefer a specific size please add your requests in the comment section below.(Required)</li>
+                </ul>  
+            </span> </div>
+            <div class="card">
+                <div class="body">
+                    {% csrf_token %}
+                      <div class="mb-3">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="First Name">  
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="First Name">  
+                        </div>
+                      </div>
+                   
+                    </div>
+            </div>
+            
+        </form>
+    </div>
+
+<div>&nbsp;</div>
+
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>PLEASE PROVIDE SPECIFIC DETAILS HERE:</p>
+            <ul>
+                <li> - Do you have any COMMENTS or REQUESTS?</li>
+                <li> - Do you have Any Allergies?</li>
+                <li> - Do you require Anastrozole? Please be aware, anastrozole will NOT be prescribed to patients who are New to treatment - We will check your levels in 12 weeks after starting treatment to determine if you require anastrozole.</li>
+            </ul>
+                          
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
 </div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>DO YOU WANT ADDITIONAL MEDICATION? (we will charge the card on file, please make sure you have the appropriate funds, if the card declines the order process will be delayed).
+            </p>
+            <p>
+                (If the provider does NOT approve you for any of the following medications he will notify the office). PLEASE BE AWARE, ALL PROVIDERS HIGHLY ENCOURAGE GONADORELIN or HCG WHILE ON T THERAPY. GONADORELIN and HCG PREVENT TESTICULAR ATROPHY (SHRINKAGE) AND HELP MAINTAIN FERTILITY, you will find these options below. *
+            </p>                    
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>$5 Signature Required for package to be delivered. Please be aware - WE DO HIGHLY SUGGEST THAT YOU REQUIRE THE PACKAGE TO BE SIGNED FOR ($5 fee). Pharmacies, Shipping carriers and Peter Uncaged MD do not accept liability for lost/stolen packages.</p>                    
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Sharps container- 3 containers $20.50</p>                    
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Alcohol prep pads. Box of 100 $17 each</p>                    
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Enclomiphene 25mg tablet : Increase fertility and Increase testosterone. Keeps LH and FSH active and increased. 25mg three times weekly:</p>                    
+            
+            <ul>
+                <li> - 30 TABS $75</li>
+                <li> - 60 TABS $145</li>
+                <li>*cannot be shipped to the following states: CA</li>
+            </ul>
+            
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>HCG 5000iu - 1 vial is $147. one vial will last you 5 months at the standard dose of 25u weekly. (Includes mixing syringe and bac water and QTY:20- 30gx5/16"x1ml):</p>                    
+            <ul>
+                <li> - 30 TABS $75</li>
+                <li> - 60 TABS $145</li>
+                <li>*cannot be shipped to the following states: AR, CA, KS, KY LA, ME, MD, MI, ND, NE, NV, NC, OR, SC, SD, TN, VA</li>
+            </ul>
+        
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Gonadorelin $89 (substitute for HCG) works the same way. one vial will last you 5 months at the standard dose of 25u weekly. (Includes QTY:20- 30gx5/16"x1ml):</p>                    
+            <ul>
+                <li>*cannot be shipped to the following states: AR, CA, MI</li>
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>GONADORELIN Nasal Spray Gel 4ml 250mcg/0.1ml. 1 bottle is good for 40 pumps, 30 day supply. One pump intranasal one time daily. $85 each
+                (LIMIT 2) *cannot be shipped to MS, CA</p>                    
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>SEMAGLUTIDE Level 1 (New patients start here): $417.00: 8 WEEK SUPPLY. (Includes QTY:10- 30gx5/16"x1ml). *NOT AVAILABLE to AR, CA, MI, KS.
+                Semaglutide requires a gradual titration in order to prevent side effects or possible dehydration. Semaglutide is NOT prescribed according to patients body weight or weight loss goal. A titration schedule must be followed for ALL PATIENTS. INJECT ONCE A WEEK SUBCUTANEOUSLY: WEEKS 1-4 inject 0.25MG (10 UNITS ON SYRINGE), WEEKS 5 - 8 inject 20 UNITS.</p>                    
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>SEMAGLUTIDE Level 2: $779.00: 8 WEEK SUPPLY. (Includes 30gx5/16"x1ml). *NOT AVAILABLE to AR, CA, MI, KS.
+                Semaglutide requires a gradual titration in order to prevent side effects or possible dehydration. Semaglutide is NOT prescribed according to patients body weight or weight loss goal. A titration schedule must be followed for ALL PATIENTS. INJECT ONCE A WEEK SUBCUTANEOUSLY: WEEK 9-12 inject 40 UNITS, WEEKS 13-16 inject 68 UNITS, WEEK 17+ inject 96 UNITS.</p>                    
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>B12 10ml injectable $69- Inject 1ml IM weekly. 10 injections per vial. (Includes QTY:10- 25gX1"x3ml). Increases energy.</p>                    
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>MIC+B12: $79 injectable for 10ml vial - Inject 1ml weekly- 10 injections with 1 vial. (Includes QTY:10- 25gX1"x3ml). *cannot be shipped to AR, CA, MI, KS. Increases energy levels, burn fats, facilitates weight loss and lowers cholesterol and relieves fatigue.</p>                    
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>MIC oral. Increases energy levels, burn fats, facilitates weight loss and lowers cholesterol and relieves fatigue: METHIONINE / INOSITOL / CYANOCOBALAMIN / L-CARNITINE) - 25/25/1/100mg TABLET. Take 1 by mouth daily:</p>
+            <ul>
+                <li> - one month: 30 tablets $86.50</li>
+                <li> - two months: 60 tablets $163.50</li>
+                <li> - three months: 90 tablets $241.50</li>
+                <li>*cannot be shipped to MS, CA</li>
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Phentermine 37.5mg. Take 1 by mouth daily:</p>
+            <ul>
+                <li> - MAX ORDER: one month: 30 tablets $86.50. Weight loss</li>
+                <li>*cannot be shipped to CA</li>
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Sildenafil 100mg tablet - Take 1/4 tab (one pill lasts 4 days) minimum of 10 per order:</p>
+            <ul>
+                <li> - 10 tablets $62.50</li>
+                <li> - 15 tablets $90</li>
+                <li> - 20 tablets $120</li>
+                <li> - 30 tablets $180</li>
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>TADALAFIL 20mg tablet $7.25 each. Take 1/4 tab (one pill lasts 4 days) minimum of 10 per order:
+               </p>
+            <ul>
+                <li> - 10 tabs $72.50</li>
+                <li> - 15 tabs $100</li>
+                <li> - 20 tabs $140</li>
+                <li> - 30 tabs $210</li>
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Mt. Everest ED MAX $10 each - Tadalafil/Oxytocin/ PT-141:
+               </p>
+            <ul>
+                <li> - Minimum order is 5 tablets- $50</li>
+                <li>Take 1 by mouth 30min before sex. *cannot be shipped to AR, CA, MI, KS, AK, HI, IN, MN</li>
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Finasteride 1mg tablet. 1mg daily:
+               </p>
+            <ul>
+                <li> - 30 tablets $40</li>
+                <li> - 60 tablets $74</li>            
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Hair loss: Minoxidil / Finasteride / Ketoconazole 50ml SPRAY $70:
+               </p>
+            <ul>
+                <li>Spray 10 pumps onto scalp TWO TIMES PER DAY</li>
+                <li>*cannot be shipped to CA</li>            
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>DHEA 25mg tablet $4 each - take 1 tab by mouth daily. Minimum 10 per order. (Can increase testosterone levels):
+               </p>
+            <ul>
+                <li> - 10 tablets $40</li>
+                <li> - 15 tablets $60</li>
+                <li> - 20 tablets $75</li>
+                <li> - 30 tablets $113</li>
+                <li>*cannot be shipped to CA</li>            
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Pregnenolone 50mg/DHEA 50mg - take 1 tab by mouth daily. Minimum 30. (Improves sex drive):
+               </p>
+            <ul>
+                <li> - 30 tablets $79</li>
+                <li> - 60 tablets $149</li>
+                <li>*cannot be shipped to AK, AR, CA, HI, IN, MI, MN, KS</li>            
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Cabergoline 0.5mg tablet (8ct) TAKE 1 BY MOUTH weekly. $77.75.
+                MUST BE APPROVED BY PROVIDER- Appointment required:
+               </p>
+            <ul>
+                <li>*cannot be shipped to CA</li>            
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Glutathione 200mg - 30ml vial $70. (includes QTY:30- 25gx1"x3ml):
+               </p>
+            <ul>
+                <li>*cannot be shipped to AK, AR, CA, HI, IN, MI, MN, KS</li>            
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>SERMORELIN INJECTABLE 9MG. (includes mixing syringe and bac water and QTY:30- 30gx5/16"x1ml):
+               </p>
+            <ul>
+                <li> - 1 MONTH $211.65</li>
+                <li> - 2 MONTH $400</li>   
+                <li> - 3 MONTH $598</li>   
+                <li>*cannot be shipped to AR, CA, HI, IN, MI, MN, KS</li>               
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>SERMORELIN pellet RDT or troche - take 1 tablet by mouth daily:
+               </p>
+            <ul>
+                <li> - 1 MONTH $183</li>
+                <li> - 2 MONTH $355</li>   
+                <li> - 3 MONTH $530</li>   
+                <li>*cannot be shipped to AR, CA, HI, IN, MI, MN, KS</li>               
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>BPC157 INJECTABLE - DILUTE WITH 10ML BACTERIOSTATIC WATER. INJECT 35U SUBQ DAILY. (includes mixing syringe and bac water and QTY:30- 30gx5/16"x1ml):
+               </p>
+            <ul>
+                <li> - 1 MONTH $226</li>
+                <li> - 2 MONTH $400</li>   
+                <li> - 3 MONTH $600</li>   
+                <li>*cannot be shipped to AK, AR, CA, HI, IN, MI, MN, KS</li>               
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>BPC157 INJECTABLE - DILUTE WITH 10ML BACTERIOSTATIC WATER. INJECT 35U SUBQ DAILY. (includes mixing syringe and bac water and QTY:30- 30gx5/16"x1ml):
+               </p>
+            <ul>
+                <li> - 1 MONTH $226</li>
+                <li> - 2 MONTH $400</li>   
+                <li> - 3 MONTH $600</li>   
+                <li>*cannot be shipped to AK, AR, CA, HI, IN, MI, MN, KS</li>               
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>BPC157 CAPSULE 500MCG:
+               </p>
+            <ul>
+                <li> - 1 MONTH $180</li>
+                <li> - 2 MONTH $348</li>   
+                <li> - 3 MONTH $511</li>   
+                <li>*cannot be shipped to AK, AR, CA, HI, IN, MI, MN, KS</li>               
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>MK677 25mg capsule - Take 1 capsule by mouth daily:
+               </p>
+            <ul>
+                <li> - 1 MONTH $195.95</li>
+                <li> - 2 MONTH $380</li>   
+                <li> - 3 MONTH $570</li>   
+                <li>*cannot be shipped to AR, CA, MI</li>               
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Ipamorelin 9mg / CJC1295 5mg. (includes mixing syringe and bac water and QTY:30- 30gx5/16"x1ml):
+               </p>
+            <ul>
+                <li> - 1 MONTH $255</li>
+                <li> - 2 MONTH $430</li>   
+                <li> - 3 MONTH $635</li>   
+                <li>*cannot be shipped to AK, AR, CA, HI, IN, MI, MN, KS</li>               
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Modafanil 200mg tablet. Take 1 tab by mouth daily:
+               </p>
+            <ul>
+                <li> - 1 MONTH $230</li> 
+                <li>*cannot be shipped to AR, CA, KS, KY LA, ME, MD, MI, ND, NE, NV, NC, OR, SC, SD, TN, VA</li>               
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Modafanil 200mg tablet. Take 1 tab by mouth daily:
+               </p>
+            <ul>
+                <li> - 1 MONTH $230</li>
+                <li> - 2 MONTH $430</li>   
+                <li> - 3 MONTH $635</li>   
+                <li>*cannot be shipped to AR, CA, KS, KY LA, ME, MD, MI, ND, NE, NV, NC, OR, SC, SD, TN, VA</li>               
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Metformin 500mg tablet. Take 1 tab by mouth daily:
+               </p>
+            <ul>
+                <li> - 1 MONTH $75</li>
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Extra syringes $3 for pack of 10</p>
+            <p>*With testosterone you will receive enough syringes for 2 injections per week, included in the cost of the program.<br />
+                Please leave in comments the size you are requesting, for example:
+               </p>
+            <ul>
+                <li> - 30g x 1/2" x 1ml</li>
+                <li> - 25g x 1" x 3ml</li>   
+                <li> - 30g x 5/16" x 1ml</li>
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Expedited shipping $30</p>
+            <p>Based on the pharmacy's timeframe, we do not ship medication! Please be aware, medications are shipped once compounded.
+               </p>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name">  
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+</div> <!--  / Container -->
+
+
 {% endblock content %}

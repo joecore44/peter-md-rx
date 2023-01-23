@@ -187,11 +187,11 @@
                                                             
                                                                                 <td>
                                                                                     <div class="g-2">
-                                                                                        <a href="{% url 'edit-patient' patient.slug %}" class="btn text-primary btn-sm"
+                                                                                        <a href="{% url 'send-form' patient.slug %}" class="btn text-primary btn-sm"
                                                                                             data-bs-toggle="tooltip"
                                                                                             data-bs-original-title="Send Form"><span
                                                                                                 class="fa fa-wpforms fs-14"></span></a>
-                                                                                        <a href="{% url 'edit-patient' patient.slug %}" class="btn text-primary btn-sm"
+                                                                                        <a href="{% url 'edit-patient' patient.slug %}" target="blank" class="btn text-primary btn-sm"
                                                                                             data-bs-toggle="tooltip"
                                                                                             data-bs-original-title="Edit"><span
                                                                                                 class="fe fe-edit fs-14"></span></a>
@@ -304,6 +304,35 @@
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
                 <h6 class="modal-title">Add Patient</h6>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+                {% csrf_token %}
+                <input type="hidden" name="meal" id="meal-id-hidden" value="0">
+                  <div class="mb-3">
+                    <div class="form-group">
+                        {{ pc_form|crispy }}
+                    </div>
+                  </div>
+               
+              </div>
+            <div class="modal-footer">
+                <button class="btn ripple btn-success" type="submit">Continue</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- send-form-model -->
+<div class="modal fade" id="add-patient-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">Send Form to Patient</h6>
                 <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
