@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container">
     <div class="wrap-login100 p-6">
-        <form class="login100-form validate-form">
+        <form class="login100-form validate-form" action="" method="POST">
             <div class="text-center mb-4">
                 <div align="center"><img src="https://peteruncagedmd.com/wp-content/uploads/unnamed-4.png" alt="Peter MD" width="100%" /></div>
                 <div>&nbsp;</div>
@@ -23,7 +23,6 @@
                       <div class="mb-3">
                         <div class="form-group">
                             {{ pc_form|crispy }}
-                            
                         </div>
                       </div>
                    
@@ -58,11 +57,9 @@
                     {% csrf_token %}
                       <div class="mb-3">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="First Name">  
+                            {{ testosterone_form|crispy }}
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="First Name">  
-                        </div>
+                       
                       </div>
                    
                     </div>
@@ -89,7 +86,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ medical_request_form|crispy }}
                     </div>
                   </div>
                
@@ -114,7 +111,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ additional_medication_form|crispy }}
                     </div>
                   </div>
                
@@ -135,7 +132,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ signature_required_form|crispy }}
                     </div>
                   </div>
                
@@ -156,7 +153,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ sharps_container_form|crispy }}
                     </div>
                   </div>
                
@@ -177,7 +174,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ alcohol_prep_boxes_form|crispy }}
                     </div>
                   </div>
                
@@ -205,7 +202,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ enclomphene_form|crispy }}
                     </div>
                   </div>
                
@@ -232,7 +229,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ hcg_form|crispy }}
                     </div>
                   </div>
                
@@ -256,7 +253,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ gonadorelin_form|crispy }}
                     </div>
                   </div>
                
@@ -278,7 +275,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ testosterone_form|crispy }}
                     </div>
                   </div>
                
@@ -300,7 +297,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ semaglutidel1_form|crispy }}
                     </div>
                   </div>
                
@@ -322,7 +319,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ semaglutidel2_form|crispy }}
                     </div>
                   </div>
                
@@ -343,7 +340,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{b12_form|crispy }}
                     </div>
                   </div>
                
@@ -364,7 +361,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ mic_b12_form|crispy }}
                     </div>
                   </div>
                
@@ -391,7 +388,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ mic_oral_form|crispy }}
                     </div>
                   </div>
                
@@ -416,7 +413,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ phentermine_form|crispy }}
                     </div>
                   </div>
                
@@ -443,7 +440,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ sildenafil_form|crispy }}
                     </div>
                   </div>
                
@@ -471,7 +468,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ tadalafil_form|crispy }}
                     </div>
                   </div>
                
@@ -497,7 +494,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ ed_max_form|crispy }}
                     </div>
                   </div>
                
@@ -523,7 +520,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ finasteride_form|crispy }}
                     </div>
                   </div>
                
@@ -549,7 +546,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ hair_loss_form|crispy }}
                     </div>
                   </div>
                
@@ -578,7 +575,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ dhea_form|crispy }}
                     </div>
                   </div>
                
@@ -605,7 +602,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ pregnelone_form|crispy }}
                     </div>
                   </div>
                
@@ -631,7 +628,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ cabergoline_form|crispy }}
                     </div>
                   </div>
                
@@ -656,7 +653,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ glutathione_form|crispy }}
                     </div>
                   </div>
                
@@ -684,7 +681,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ sermorelin_form|crispy }}
                     </div>
                   </div>
                
@@ -712,7 +709,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ sermorelinp_form|crispy }}
                     </div>
                   </div>
                
@@ -740,35 +737,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
-                    </div>
-                  </div>
-               
-                </div>
-        </div>
-        
-    </form>
-</div>
-
-<div>&nbsp;</div>
-<div class="wrap-login100 p-6">
-    <form class="login100-form validate-form">
-        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
-            <p>BPC157 INJECTABLE - DILUTE WITH 10ML BACTERIOSTATIC WATER. INJECT 35U SUBQ DAILY. (includes mixing syringe and bac water and QTY:30- 30gx5/16"x1ml):
-               </p>
-            <ul>
-                <li> - 1 MONTH $226</li>
-                <li> - 2 MONTH $400</li>   
-                <li> - 3 MONTH $600</li>   
-                <li>*cannot be shipped to AK, AR, CA, HI, IN, MI, MN, KS</li>               
-            </ul>
-        </div> </div>
-        <div class="card">
-            <div class="body">
-                {% csrf_token %}
-                  <div class="mb-3">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ bpc_form|crispy }}
                     </div>
                   </div>
                
@@ -796,7 +765,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ bpcc_form|crispy }}
                     </div>
                   </div>
                
@@ -824,7 +793,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ mk677_form|crispy }}
                     </div>
                   </div>
                
@@ -852,7 +821,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ ipa_form|crispy }}
                     </div>
                   </div>
                
@@ -878,35 +847,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
-                    </div>
-                  </div>
-               
-                </div>
-        </div>
-        
-    </form>
-</div>
-
-<div>&nbsp;</div>
-<div class="wrap-login100 p-6">
-    <form class="login100-form validate-form">
-        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
-            <p>Modafanil 200mg tablet. Take 1 tab by mouth daily:
-               </p>
-            <ul>
-                <li> - 1 MONTH $230</li>
-                <li> - 2 MONTH $430</li>   
-                <li> - 3 MONTH $635</li>   
-                <li>*cannot be shipped to AR, CA, KS, KY LA, ME, MD, MI, ND, NE, NV, NC, OR, SC, SD, TN, VA</li>               
-            </ul>
-        </div> </div>
-        <div class="card">
-            <div class="body">
-                {% csrf_token %}
-                  <div class="mb-3">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ modafanil_form|crispy }}
                     </div>
                   </div>
                
@@ -931,7 +872,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ metformin_form|crispy }}
                     </div>
                   </div>
                
@@ -960,7 +901,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ testosterone_form|crispy }}
                     </div>
                   </div>
                
@@ -983,7 +924,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name">  
+                        {{ shipping_form|crispy }}
                     </div>
                   </div>
                

@@ -112,6 +112,10 @@
         checkBox.forEach(element => {
             element.classList.add("form-control");
         });
+        const checkBox2 = document.querySelectorAll('checkbox[id^="id_"]');
+        checkBox2.forEach(element => {
+            element.classList.add("form-check-input");
+        });
         const elementsLabels = document.querySelectorAll('label[for^="id_"]');
         elementsLabels.forEach(element => {
             element.classList.add("form-label");
