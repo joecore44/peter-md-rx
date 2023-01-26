@@ -210,3 +210,46 @@ class PatientActivity(models.Model):
     def __str__(self):
         return str(self.patient.first_name) + ' ' + str(self.action) + ' ' + str(self.value)
 
+class Provider(models.Model):
+    slug = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    practice_name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255, unique=True)
+    phone = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    zip_code = models.CharField(max_length=255)
+    state_license = models.CharField(max_length=255)
+    npi = models.CharField(max_length=255)
+    dea_number = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.first_name) + ' ' + str(self.last_name)
+
+class PatientOrder(models.Model):
+    STATUS_CHOICES = (
+        ('Pending', 'Pending'),
+        ('Filled', 'Filled'),
+        ('Requested', 'Requested'),
+
+    )
+    slug = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    patient = models.ForeignKey(PatientProfile, on_delete=models.CASCADE)
+    order_date = models.DateTimeField(auto_now_add=True)
+    order_status = models.CharField(max_length=255, choices=STATUS_CHOICES, default='Pending')
+
+    def __str__(self):
+        return str(self.patient.first_name) + ' ' + str(self.order_status)
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(PatientOrder, on_delete=models.CASCADE)
+    item = models.CharField(max_length=255)
+    size = models.CharField(max_length=255)
+    instructions = models.CharField(max_length=255)
+    quantity = models.IntegerField()
+    
+
+    def __str__(self):
+        return str(self.order.patient.first_name) + ' ' + str(self.item)

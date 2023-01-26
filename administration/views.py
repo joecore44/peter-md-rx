@@ -8,6 +8,7 @@ from django.views import View
 from xhtml2pdf import pisa
 from . import forms
 from .models import PatientProfile, MedicationOrder, PatientActivity
+from .models import OrderItem, PatientOrder, Provider
 from django.conf import settings
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
@@ -400,7 +401,24 @@ def update_patient_form(request, slug, field, val):
                 activity.action = 'Form:'
                 activity.value = 'Order Form Submitted'
                 activity.save()
-                return redirect('dashboard')
+                order = PatientOrder.objects.create(patient=patient)
+                for field in medication_order._meta.get_fields():
+                    if field.name != 'id' and field.name != 'patient' and field.name != 'slug' and field.name != 'medical_requests':
+                        if getattr(medication_order, field.name) != 'NA' and getattr(medication_order, field.name) != 'No' and getattr(medication_order, field.name) != '0':
+                            item = OrderItem.objects.create(order=order, quantity=0)
+                            item.item = field.name
+                            size = 0
+                            if field.name == 'testosterone':
+                                size = '10ml'
+                                quantity = 1
+                                instructions = 'inject 0.4ml IM twice per week'
+                            item.size = size
+                            item.quantity = quantity
+                            item.instructions = instructions
+                            item.save()
+                            print(field.name + ' ' + getattr(medication_order, field.name))
+                response = {'success': True}
+                return JsonResponse(response)
 
 provider = {
     'first_name': 'John',
@@ -428,17 +446,6 @@ def render_pdf(request, slug, form_slug):
     pdf = render_to_pdf('./content/rx/template-v1.html', context)
     return HttpResponse(pdf, content_type='application/pdf')
         
-'''class ViewPDF(View):
-	patient = PatientProfile.objects.get(slug=slug)
-    context = {
-            'provider': provider,
-            'patient': patient,
-        }
-    def get(self, request, *args, **kwargs):
-
-		pdf = render_to_pdf('./content/rx/template-v1.html')
-		return HttpResponse(pdf, content_type='application/pdf')
-'''
         
 
 
