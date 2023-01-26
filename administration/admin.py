@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import StaffCreationForm, StaffChangeForm
-from .models import Staff, PatientProfile, MedicationOrder
+from .models import Staff, PatientProfile, MedicationOrder, PatientActivity
 
 class CustomUserAdmin(UserAdmin):
     add_form = StaffCreationForm
@@ -14,3 +14,4 @@ class CustomUserAdmin(UserAdmin):
 admin.site.register(Staff, CustomUserAdmin)
 admin.site.register(PatientProfile)
 admin.site.register(MedicationOrder)
+admin.site.register(PatientActivity)

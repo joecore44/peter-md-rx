@@ -54,11 +54,14 @@
             </span> </div>
             <div class="card">
                 <div class="body">
+                    
                     {% csrf_token %}
                       <div class="mb-3">
                         <div class="form-group">
                             {{ testosterone_form|crispy }}
                         </div>
+                        
+                 
                        
                       </div>
                    
@@ -807,7 +810,7 @@
 <div class="wrap-login100 p-6">
     <form class="login100-form validate-form">
         <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
-            <p>Ipamorelin 9mg / CJC1295 5mg. (includes mixing syringe and bac water and QTY:30- 30gx5/16"x1ml):
+            <p>Ipamorelin 9mg. (includes mixing syringe and bac water and QTY:30- 30gx5/16"x1ml):
                </p>
             <ul>
                 <li> - 1 MONTH $255</li>
@@ -822,6 +825,34 @@
                   <div class="mb-3">
                     <div class="form-group">
                         {{ ipa_form|crispy }}
+                    </div>
+                  </div>
+               
+                </div>
+        </div>
+        
+    </form>
+</div>
+
+<div>&nbsp;</div>
+<div class="wrap-login100 p-6">
+    <form class="login100-form validate-form">
+        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
+            <p>Ipamorelin 9mg / CJC1295 5mg. (includes mixing syringe and bac water and QTY:30- 30gx5/16"x1ml):
+               </p>
+            <ul>
+                <li> - 1 MONTH $255</li>
+                <li> - 2 MONTH $430</li>   
+                <li> - 3 MONTH $635</li>   
+                <li>*cannot be shipped to AK, AR, CA, HI, IN, MI, MN, KS</li>               
+            </ul>
+        </div> </div>
+        <div class="card">
+            <div class="body">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <div class="form-group">
+                        {{ ipa_cjc_form|crispy }}
                     </div>
                   </div>
                
@@ -936,6 +967,72 @@
 
 <div>&nbsp;</div>
 </div> <!--  / Container -->
+<!-- confirmation-model -->
+<div class="modal fade" id="confirmation-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title"><i class="fa fa-exclamation-circle"></i> Finish Order?</h6>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+               
+                  <div class="mb-3">
+                    <p>Are you finished with your medication order? If not, make sure to finish every question before sending the order to our staff.</p>
+                    <p>Every Question is Saved in real Time.</p>
+                  </div>
+               
+              </div>
+            <div class="modal-footer">
+                <button class="btn ripple btn-success" type="submit"><a href="/api/update/{{ slug }}/status/done">Finish Order</a></button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    .float{
+        position:fixed;
+        bottom:40px;
+        right:40px;
+        background-color:#ff4000;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+        box-shadow: 2px 2px 3px #999;
+    }
+    
+    .my-float{
+        margin:22px;
+        weight:bold;
+    }
+</style>
+<a href="javascript:void(0);" class="float">
+<p class="my-float" data-bs-toggle="modal" data-bs-target="#confirmation-modal"><strong>SUBMIT ORDER</strong></p>
+</a>
+<script>
+    document.getElementById("id_testosterone").onchange = function() {
+    var x = document.getElementById("id_testosterone").value;
+    fetch( '/api/update/{{ slug }}/testosterone/' + x )
+      .then( response => response.json() )
+      .then( response => {
+          console.log(response);
+      } );
+    };
+    document.getElementById("id_medical_requests").onchange = function() {
+        var x = document.getElementById("id_medical_requests").value;
+        fetch( '/api/update/{{ slug }}/medical_requests/' + x )
+          .then( response => response.json() )
+          .then( response => {
+              console.log(response);
+          } );
+        };
+
+    
+</script>
 
 
 {% endblock content %}

@@ -3,96 +3,22 @@
 {% load static %}
 {% block content %}
 <div class="page-header">
-    <h1 class="page-title">Welcome  {{ request.user.first_name }}!</h1>
+    <h1 class="page-title">Form Submissions</h1>
     <div>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            <li class="breadcrumb-item active" aria-current="page">Forms</li>
         </ol>
     </div>
 </div>
 <!-- STAFF INDEX PAGE START -->
-                        <!-- ROW-1 -->
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-4">
-                                        <div class="card overflow-hidden">
-                                            <div class="card-body">
-                                                <div class="d-flex">
-                                                    <div class="mt-2">
-                                                        <h6 class="">Total Patients</h6>
-                                                        <h2 class="mb-0 number-font">44,278</h2>
-                                                    </div>
-                                                    <div class="ms-auto">
-                                                        <div class="chart-wrapper mt-1">
-                                                            <canvas id="saleschart"
-                                                                class="h-8 w-9 chart-dropshadow"></canvas>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <span class="text-muted fs-12"><span class="text-secondary"><i
-                                                            class="fe fe-arrow-up-circle  text-secondary"></i> 5%</span>
-                                                    Last week</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-4">
-                                        <div class="card overflow-hidden">
-                                            <div class="card-body">
-                                                <div class="d-flex">
-                                                    <div class="mt-2">
-                                                        <h6 class="">Active Patients</h6>
-                                                        <h2 class="mb-0 number-font">67,987</h2>
-                                                    </div>
-                                                    <div class="ms-auto">
-                                                        <div class="chart-wrapper mt-1">
-                                                            <canvas id="leadschart"
-                                                                class="h-8 w-9 chart-dropshadow"></canvas>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <span class="text-muted fs-12"><span class="text-pink"><i
-                                                            class="fe fe-arrow-down-circle text-pink"></i> 0.75%</span>
-                                                    Last 6 days</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-4">
-                                        <div class="card overflow-hidden">
-                                            <div class="card-body">
-                                                <div class="d-flex">
-                                                    <div class="mt-2">
-                                                        <h6 class="">Pending Patients</h6>
-                                                        <h2 class="mb-0 number-font">$76,965</h2>
-                                                    </div>
-                                                    <div class="ms-auto">
-                                                        <div class="chart-wrapper mt-1">
-                                                            <canvas id="profitchart"
-                                                                class="h-8 w-9 chart-dropshadow"></canvas>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <span class="text-muted fs-12"><span class="text-green"><i
-                                                            class="fe fe-arrow-up-circle text-green"></i> 0.9%</span>
-                                                    Last 9 days</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ROW-1 END -->
 
-                        
-
-                        
                         <!-- Staff Index -->
                         <div class="row">
-                            <div class="col-12 col-sm-12">
+                            <div class="col-6 col-sm-6">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title mb-0">Patients</h3>
+                                        <h3 class="card-title mb-0">Recently Received</h3>
                                     </div>
                                     <div class="card-body pt-4">
                                         <div class="grid-margin">
@@ -102,15 +28,8 @@
                                                         <div class="tabs-menu1">
                                                             <!-- Tabs -->
                                                             <ul class="nav panel-tabs product-sale">
-                                                                <li>
-                                                                    <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#add-patient-modal" data-bs-whatever="@mdo"><i class="fa fa-plus"></i> Add Patient</button>
-
-                                                                <li>
-                                                                <li><a href="#tab5" class="active"
-                                                                        data-bs-toggle="tab">Recently Completed</a></li>
+            
                                                                 
-                                                                <li><a href="#tab6" data-bs-toggle="tab"
-                                                                        class="text-dark">Pending</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -123,12 +42,7 @@
                                                                         <thead class="border-top">
                                                                             <tr>
                                                                                 <th class="bg-transparent border-bottom-0">Name</th>
-                                                                                <th
-                                                                                    class="bg-transparent border-bottom-0">
-                                                                                    Email</th>
-                                                                                <th
-                                                                                    class="bg-transparent border-bottom-0">
-                                                                                    Phone</th>
+                                                                                
                                                                                 <th
                                                                                     class="bg-transparent border-bottom-0">
                                                                                     Form</th>
@@ -143,6 +57,7 @@
                                                                         </thead>
                                                                         <tbody>
                                                                             {% for patient in patients %}
+                                                                            {% if patient.status == 'New Submission' %}
                                                                             <tr class="border-bottom">
                                                                                 <td class="text-left">
                                                                                     <div class="mt-0 mt-sm-2 d-block">
@@ -151,27 +66,7 @@
                                                                                              {{ patient.first_name }} {{ patient.last_name}}</span>
                                                                                     </div>
                                                                                 </td>
-                                                                                <td>
-                                                                                    <div class="d-flex">
-                                                                        
-                                                                                        <div
-                                                                                            class="ms-3 mt-0 mt-sm-2 d-block">
-                                                                                            <h6
-                                                                                                class="mb-0 fs-14 fw-semibold">
-                                                                                                {{ patient.email }}</h6>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <div class="d-flex">
-                                                                                        <div
-                                                                                            class="mt-0 mt-sm-3 d-block">
-                                                                                            <h6
-                                                                                                class="mb-0 fs-14 fw-semibold">
-                                                                                                {{ patient.phone }}</h6>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </td>
+        
                                                                                 <td><span class="mt-sm-2 d-block">Medication Order Form</span></td>
                                                                                 
                                                                                 <td>
@@ -204,6 +99,109 @@
                                                                                     </div>
                                                                                 </td>
                                                                             </tr>
+                                                                            {% endif %}
+                                                                            {% endfor %}
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title mb-0">Pending</h3>
+                                    </div>
+                                    <div class="card-body pt-4">
+                                        <div class="grid-margin">
+                                            <div class="">
+                                                <div class="panel panel-primary">
+                                                    <div class="tab-menu-heading border-0 p-0">
+                                                        <div class="tabs-menu1">
+                                                            <!-- Tabs -->
+                                                            <ul class="nav panel-tabs product-sale">
+                                                                <li>
+                                                                    <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#add-patient-modal" data-bs-whatever="@mdo"><i class="fa fa-plus"></i> Add Patient</button>
+
+                                                                <li>
+                                                                
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-body tabs-menu-body border-0 pt-0">
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="tab5">
+                                                                <div class="table-responsive">
+                                                                    <table id="data-table"
+                                                                        class="table table-bordered text-nowrap mb-0">
+                                                                        <thead class="border-top">
+                                                                            <tr>
+                                                                                <th class="bg-transparent border-bottom-0">Name</th>
+                                                                                
+                                                                                <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Form</th>
+                                                                                    <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Status</th>
+                                                                                
+                                                                                
+                                                                                <th class="bg-transparent border-bottom-0"
+                                                                                    style="width: 5%;">Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            {% for form in forms %}
+                                                                            {% if form.patient.status == 'Pending' %}
+                                                                            <tr class="border-bottom">
+                                                                                <td class="text-left">
+                                                                                    <div class="mt-0 mt-sm-2 d-block">
+                                                                                        <span
+                                                                                            class="mb-0 fs-14 fw-semibold">
+                                                                                             {{ form.patient.first_name }} {{ form.patient.last_name}}</span>
+                                                                                    </div>
+                                                                                </td>
+                                                                                
+                                                                                <td><span class="mt-sm-2 d-block">Medication Order Form</span></td>
+                                                                                
+                                                                                <td>
+                                                                                    {% if form.patient.status == 'Open' %}
+                                                                                    <span class="tag tag-red">Open</span>
+                                                                                    {% elif form.patient.status == 'Pending' %}
+                                                                                    <span class="tag tag-orange">Pending</span>
+                                                                                    {% elif form.patient.status == 'Active' %}
+                                                                                    <span class="tag tag-green">Active</span>
+                                                                                    {% endif %}
+                                                                                </td>
+                                                                                
+                                                            
+                                                                                <td>
+                                                                                    <div class="g-2">
+                                                                                        <a href="{% url 'send-form' form.patient.slug %}" class="btn text-primary btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Send Form"><span
+                                                                                                class="fa fa-wpforms fs-14"></span></a>
+                                                                                        <a href="{% url 'view-patient-form' form.patient.slug form.slug %}" class="btn text-primary btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Edit"><span
+                                                                                                class="fe fe-edit fs-14"></span></a>
+                                                                                        <a href="{% url 'delete-patient' form.patient.slug %}" class="btn text-danger btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Delete"><span
+                                                                                                class="fe fe-trash-2 fs-14"></span></a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            {% endif %}
                                                                             {% endfor %}
                                                                             
                                                                         </tbody>

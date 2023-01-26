@@ -1,0 +1,194 @@
+<head>
+    <style>
+        @page {
+            size: a4 portrait;
+            @frame header_frame { 
+                -pdf-frame-content: header_content;
+                left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+            }
+            @frame content_frame {  
+                left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+            }
+            @frame footer_frame {  
+                -pdf-frame-content: footer_content;
+                left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+            }
+        }
+        text { font-size: 12px;}
+    </style>
+
+    </head>
+    
+    <body>
+        <!-- Content for Static Frame 'header_frame' -->
+        <div align="left">
+            <img src="https://peteruncagedmd.com/wp-content/uploads/peter-md-rx-logo.jpg" />
+        </div>
+        <div id="header_content" align="right">
+            
+            <h3>Date: {% now "jS F Y H:i" %}</h3>
+        </div>
+        <div id="header_content_2" align="left">
+            <p>Patient Information:</p>
+        </div>
+    
+        <!-- Content for Static Frame 'footer_frame' -->
+        <div id="footer_content">(c) - page <pdf:pagenumber>
+            of <pdf:pagecount>
+        </div>
+    
+        <!-- HTML Content -->
+        <table>
+                <tr>
+                    <td>Name: <strong>{{ patient.first_name }} {{ patient.last_name }}</strong></td>
+                    <td>DOB: <strong>{{ patient.date_of_birth }}</strong></td>
+                    <td>Email: <strong>{{ patient.email }}</strong></td>
+                </tr>
+                
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <td>Shipping: <strong>{{ patient.address }}, {{ patient.city }}, {{ patient.state }} {{ patient.zip }}</strong></td>
+                <td>Phone: <strong>{{ patient.phone }}</strong></td>
+            </tr>
+            <tr>
+                <td>Allergies:: <strong>Lovinox, Idiots</strong></td>
+                <td>DL#: <strong>A123456</strong></td>
+            </tr> 
+    </table>
+    
+        <hr>
+    <div align="left">
+        <p>Prescription Orders:</p>
+    </div>
+        <table>
+            <tr>
+     
+                <th align="left" width="45px">QTY</th>
+                <th align="left">Drug & Strength</th>
+                <th align="left" width="45px">Size</th>
+                <th align="left">Sig/Instructions</th>
+            </tr>
+            <tr>
+     
+                <td>1</td>
+                <td>Testosterone Cypionate 200mg</td>
+                <td>10 ML</td>
+                <td>inject 0.4ml IM twice per week</td>
+                
+            </tr>
+            <tr>
+     
+                <td>1</td>
+                <td>Testosterone Cypionate 200mg</td>
+                <td>10 ML</td>
+                <td>inject 0.4ml IM twice per week</td>
+                
+            </tr>
+            <tr>
+     
+                <td>1</td>
+                <td>Testosterone Cypionate 200mg</td>
+                <td>10 ML</td>
+                <td>inject 0.4ml IM twice per week</td>
+                
+            </tr>
+            <tr>
+     
+                <td>1</td>
+                <td>Testosterone Cypionate 200mg</td>
+                <td>10 ML</td>
+                <td>inject 0.4ml IM twice per week</td>
+                
+            </tr>
+            <tr>
+     
+                <td>1</td>
+                <td>Testosterone Cypionate 200mg</td>
+                <td>10 ML</td>
+                <td>inject 0.4ml IM twice per week</td>
+                
+            </tr>
+            <tr>
+     
+                <td>1</td>
+                <td>Testosterone Cypionate 200mg</td>
+                <td>10 ML</td>
+                <td>inject 0.4ml IM twice per week</td>
+                
+            </tr>
+            <tr>
+     
+                <td>1</td>
+                <td>Testosterone Cypionate 200mg</td>
+                <td>10 ML</td>
+                <td>inject 0.4ml IM twice per week inject 0.4ml IM twice per week inject 0.4ml IM twice per week inject 0.4ml IM twice per week</td>
+                
+            </tr>
+            <tr>
+     
+                <td>1</td>
+                <td>Testosterone Cypionate 200mg</td>
+                <td>10 ML</td>
+                <td>inject 0.4ml IM twice per week</td>
+                
+            </tr>
+            <tr>
+     
+                <td>1</td>
+                <td>Testosterone Cypionate 200mg Testosterone Cypionate 200mg Testosterone Cypionate 200mg</td>
+                <td>10 ML</td>
+                <td>inject 0.4ml IM twice per week</td>
+                
+            </tr>
+        </table>
+    
+        <hr>
+        <table>
+            <tr>
+                <td align="left"><p>Diagnostic Code: <strong>E29.1</strong></p></td>
+                <td align="right"><p>Shipping Info: <strong>Ground Shipping. Ship to Patient. No Signature Required.</strong></p></td>
+            </tr>
+        </table>
+        <hr>
+        <div align="left">
+            <p>Doctor & Clinic Information:</p>
+        </div>
+        <table>
+            <tr>
+                <td align="left"><p>Name of Practice: <strong>{{ provider.practice_name }}</strong></p></td>
+                <td align="left"><p>Doctor Name: <strong>{{ provider.first_name }} {{provider.last_name }}</strong></p></td>
+                <td align="left"><p>DEA#: <strong>{{ provider.dea_number }}</strong></p></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td align="left"><p>Address: <strong>{{ provider.address }}</strong></p></td>
+                <td align="left"><p>City: <strong>{{ provider.cisty }}</strong></p></td>
+                <td align="left"><p>State: <strong>{{ provider.state }}</strong></p></td>
+                <td align="left"><p>Zip: <strong>{{ provider.zip }}</strong></p></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td align="left"><p>Email: <strong>{{ provider.email }}</strong></p></td>
+                <td align="left"><p>Phone: <strong>{{ provider.phone }}</strong></p></td>
+                <td align="left"><p>Fax#: <strong>{{ provider.fax }}</strong></p></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td align="left"><p>State License#: <strong>_____________________</strong></p></td>
+                <td align="left"><p>Tracking Email: <strong>Use Patient's Email</strong></p></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td align="left"><p>Doctor's Signature: <strong>________________________________________</strong></p></td>
+                <td align="left"><p>NPI#: <strong>{{ provider.npi_number }}</strong></p></td>
+            </tr>
+        </table>
+  
+    </body>
+    </html>

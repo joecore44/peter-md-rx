@@ -23,6 +23,7 @@ class PatientProfile(models.Model):
     STATUS_CHOICES = (
         ('Open', 'Open'),
         ('Pending', 'Pending'),
+        ('New Submission', 'New Submission'),
         ('Active', 'Active'),
     )
     slug = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -55,7 +56,7 @@ class MedicationOrder(models.Model):
     TEST_CHOICES = (
             ('IM', 'IM (intramuscular) - injecting into the muscle'),
             ('SUBQ', 'SUBQ (Subcutaneous) - injecting into the fatty tissue'),
-            ('N/A', 'Not due for testosterone to be filled'),
+            ('NA', 'Not due for testosterone to be filled'),
             ('ENCLOMIPHENE', 'Enclomophine - Clomid'),
         )
     NUMBER_CHOICES = (
@@ -72,23 +73,27 @@ class MedicationOrder(models.Model):
         ('60 tabs', '60 tabs $145'),
     )
     MIC_CHOICES = (
+        ('0', '0'),
         ('One Month','One Month: 30 tablets $86.50'),
         ('Two Months','Two Months: 60 tablets $163.50'),
         ('Three Months','Three Months: 90 tablets $241.50'),
     )
     SILDENAFIL_CHOICES = (
+        ('0', '0'),
         ('10 Tablets','10 Tablets: $62.50'),
         ('15 Tablets','15 Tablets: $90'),
         ('20 Tablets','20 Tablets: $120'),
         ('30 Tablets','30 Tablets: $180'),
     )
     TADALAFIL_CHOICES = (
+        ('0', '0'),
         ('10 Tablets','10 Tablets: $72.50'),
         ('15 Tablets','15 Tablets: $100'),
         ('20 Tablets','20 Tablets: $140'),
         ('30 Tablets','30 Tablets: $210'),
     )
     ED_MAX_CHOICES = (
+        ('0', '0'),
         ('5', '5'),
         ('10', '10'),
         ('15', '15'),
@@ -97,52 +102,67 @@ class MedicationOrder(models.Model):
         ('30', '30'),
     )
     FINA_CHOICES = (
+        ('0', '0'),
         ('30 Tablets','30 Tablets: $40'),
         ('60 Tablets','60 Tablets: $74'),
     )
     DHEA_CHOICES = (
+        ('0', '0'),
         ('10 Tablets','10 Tablets: $40'),
         ('15 Tablets','15 Tablets: $60'),
         ('20 Tablets','20 Tablets: $75'),
         ('30 Tablets','30 Tablets: $113'),
     )
     PREGNELONE_CHOICES = (
+        ('0', '0'),
         ('30 Tablets','30 Tablets: $79'),
         ('60 Tablets','60 Tablets: $149'),
     )
     SERMORELIN_CHOICES = (
+        ('0', '0'),
         ('1 Month', '1 Month $211.65'),
         ('2 Month', '2 Month $400'),
         ('3 Month', '3 Month $598'),
     )
     SERMORELINP_CHOICES = (
+        ('0', '0'),
         ('1 Month', '1 Month $183'),
         ('2 Month', '2 Month $355'),
         ('3 Month', '3 Month $530'),
     )
     BPC_CHOICES = (
+        ('0', '0'),
         ('1 Month', '1 Month $226'),
         ('2 Month', '2 Month $400'),
         ('3 Month', '3 Month $600'),
     )
     BPCC_CHOICES = (
+        ('0', '0'),
         ('1 Month', '1 Month $180'),
         ('2 Month', '2 Month $348'),
         ('3 Month', '3 Month $511'),
     )
     MK677_CHOICES = (
+        ('0', '0'),
         ('1 Month', '1 Month $195'),
         ('2 Month', '2 Month $380'),
         ('3 Month', '3 Month $570'),
     )
     IPA_CJC_CHOICES = (
+        ('0', '0'),
         ('1 Month', '1 Month $255'),
         ('2 Month', '2 Month $430'),
         ('3 Month', '3 Month $635'),
     )
+    SYRINGE_CHOICES = (
+        ('0', '0'),
+        ('30g x 1/2" x 1ml', '30g x 1/2" x 1ml'),
+        ('25g x 1" x 3ml', '25g x 1" x 3ml'),
+        ('30g x 5/16" x 1ml', '30g x 5/16" x 1ml'),
+    )
 
 
-    testosterone = models.CharField(max_length=255, choices=TEST_CHOICES, default='N/A')
+    testosterone = models.CharField(max_length=255, choices=TEST_CHOICES, default='NA')
     medical_requests = models.TextField(verbose_name='Comments or Requests')
     additional_medication = models.CharField(max_length=255, choices=YES_NO_CHOICES, default='No')
     signature_required = models.CharField(max_length=25, choices=YES_NO_CHOICES, default='No')
@@ -175,28 +195,18 @@ class MedicationOrder(models.Model):
     ipa = models.CharField(max_length=25, choices=IPA_CJC_CHOICES, default='0')
     modafanil = models.CharField(max_length=255, choices=YES_NO_CHOICES, default='No')
     metformin = models.CharField(max_length=255, choices=YES_NO_CHOICES, default='No')
+    syringes = models.CharField(max_length=255, choices=SYRINGE_CHOICES, default='0')
     expedited_shipping = models.CharField(max_length=255, choices=YES_NO_CHOICES, default='No')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     def __str__(self):
         return str(self.patient.first_name)
+
+class PatientActivity(models.Model):
+    patient = models.ForeignKey(PatientProfile, on_delete=models.CASCADE)
+    date_time = models.DateTimeField(auto_now_add=True)
+    action = models.CharField(max_length=255)
+    value = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.patient.first_name) + ' ' + str(self.action) + ' ' + str(self.value)
 
