@@ -45,7 +45,7 @@
                                                                                 
                                                                                 <th
                                                                                     class="bg-transparent border-bottom-0">
-                                                                                    Form</th>
+                                                                                    Date</th>
                                                                                     <th
                                                                                     class="bg-transparent border-bottom-0">
                                                                                     Status</th>
@@ -56,43 +56,44 @@
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                            {% for patient in patients %}
-                                                                            {% if patient.status == 'New Submission' %}
+                                                                            {% for order in orders %}
+                                                                            {% if order.patient.status == 'New Submission' %}
                                                                             <tr class="border-bottom">
                                                                                 <td class="text-left">
                                                                                     <div class="mt-0 mt-sm-2 d-block">
                                                                                         <span
                                                                                             class="mb-0 fs-14 fw-semibold">
-                                                                                             {{ patient.first_name }} {{ patient.last_name}}</span>
+                                                                                             {{ order.patient.first_name }} {{ order.patient.last_name}}</span>
                                                                                     </div>
                                                                                 </td>
         
-                                                                                <td><span class="mt-sm-2 d-block">Medication Order Form</span></td>
+                                                                                <td><span class="mt-sm-2 d-block">{{ order.order_date}}</span></td>
                                                                                 
                                                                                 <td>
-                                                                                    {% if patient.status == 'Open' %}
+                                                                                    {% if order.patient.status == 'Open' %}
                                                                                     <span class="tag tag-red">Open</span>
-                                                                                    {% elif patient.status == 'Pending' %}
+                                                                                    {% elif order.patient.status == 'Pending' %}
                                                                                     <span class="tag tag-orange">Pending</span>
-                                                                                    {% elif patient.status == 'Active' %}
+                                                                                    {% elif order.patient.status == 'Active' %}
                                                                                     <span class="tag tag-green">Active</span>
-                                                                                    {% elif patient.status == 'New Submission' %}
+                                                                                    {% elif order.patient.status == 'New Submission' %}
                                                                                     <span class="tag tag-red">New Submission</span>
                                                                                     {% endif %}
+                                                                                    
                                                                                 </td>
                                                                                 
                                                             
                                                                                 <td>
                                                                                     <div class="g-2">
-                                                                                        <a href="{% url 'send-form' patient.slug %}" class="btn text-primary btn-sm"
+                                                                                        <a href="{% url 'rx-view' order.patient.slug order.slug %}" target="_blank" class="btn text-primary btn-sm"
                                                                                             data-bs-toggle="tooltip"
-                                                                                            data-bs-original-title="Send Form"><span
+                                                                                            data-bs-original-title="View Prescription"><span
                                                                                                 class="fa fa-wpforms fs-14"></span></a>
-                                                                                        <a href="{% url 'edit-patient' patient.slug %}" target="blank" class="btn text-primary btn-sm"
+                                                                                        <a href="{% url 'view-order' order.slug %}" class="btn text-primary btn-sm"
                                                                                             data-bs-toggle="tooltip"
                                                                                             data-bs-original-title="Edit"><span
                                                                                                 class="fe fe-edit fs-14"></span></a>
-                                                                                        <a href="{% url 'delete-patient' patient.slug %}" class="btn text-danger btn-sm"
+                                                                                        <a href="{% url 'delete-order' order.slug %}" class="btn text-danger btn-sm"
                                                                                             data-bs-toggle="tooltip"
                                                                                             data-bs-original-title="Delete"><span
                                                                                                 class="fe fe-trash-2 fs-14"></span></a>
@@ -190,7 +191,7 @@
                                                                                             data-bs-toggle="tooltip"
                                                                                             data-bs-original-title="Send Form"><span
                                                                                                 class="fa fa-wpforms fs-14"></span></a>
-                                                                                        <a href="{% url 'view-patient-form' form.patient.slug form.slug %}" class="btn text-primary btn-sm"
+                                                                                        <a href="{% url 'edit-patient' form.patient.slug %}" class="btn text-primary btn-sm"
                                                                                             data-bs-toggle="tooltip"
                                                                                             data-bs-original-title="Edit"><span
                                                                                                 class="fe fe-edit fs-14"></span></a>

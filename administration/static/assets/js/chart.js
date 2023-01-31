@@ -188,7 +188,7 @@ $(function() {
                 borderColor: "#6c5ffc",
                 borderWidth: "3",
                 lineTension:0.3,
-                backgroundColor: "rgba(108, 95, 252, .1)",
+                backgroundColor: "rgba(62, 17, 2, .1)",
                 fill: true,
                 data: [22, 44, 67, 43, 76, 45, 12]
             }, {
@@ -291,9 +291,9 @@ $(function() {
 
                 label: "Data1",
                 data: [65, 59, 66, 45, 56, 55, 40],
-                borderColor: "rgba(108, 95, 252, .8)",
+                borderColor: "rgba(62, 17, 2, .8)",
                 borderWidth: "1",
-                backgroundColor: "rgba(108, 95, 252, .4)"
+                backgroundColor: "rgba(62, 17, 2, .4)"
             }, {
                 label: "Data2",
                 data: [28, 12, 40, 19, 63, 27, 87],

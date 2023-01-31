@@ -1,0 +1,287 @@
+{% extends 'content/staff-base2.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Medication Orders</h1>
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Patients</li>
+        </ol>
+    </div>
+</div>
+<!-- STAFF INDEX PAGE START -->
+
+                        <!-- Staff Index -->
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title mb-0">Patients</h3>
+                                    </div>
+                                    <div class="card-body pt-4">
+                                        <div class="grid-margin">
+                                            <div class="">
+                                                <div class="panel panel-primary">
+                                                    <div class="tab-menu-heading border-0 p-0">
+                                                        <div class="tabs-menu1">
+                                                            <!-- Tabs -->
+                                                            <ul class="nav panel-tabs product-sale">
+                                                                <li>
+                                                                    <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#add-patient-modal" data-bs-whatever="@mdo"><i class="fa fa-plus"></i> Add Patient</button>
+
+                                                                <li>
+                                                                <li><a href="#tab5" class="active"
+                                                                        data-bs-toggle="tab">Recently Completed</a></li>
+                                                                
+                                                                <li><a href="#tab6" data-bs-toggle="tab"
+                                                                        class="text-dark">Pending</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-body tabs-menu-body border-0 pt-0">
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="tab5">
+                                                                <div class="table-responsive">
+                                                                    <table id="data-table"
+                                                                        class="table table-bordered text-nowrap mb-0">
+                                                                        <thead class="border-top">
+                                                                            <tr>
+                                                                                <th class="bg-transparent border-bottom-0">Name</th>
+                                                                                <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Email</th>
+                                                                                <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Phone</th>
+                                                                                <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Form</th>
+                                                                                    <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Status</th>
+                                                                                
+                                                                                
+                                                                                <th class="bg-transparent border-bottom-0"
+                                                                                    style="width: 5%;">Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            {% for order in orders %}
+                                                                            <tr class="border-bottom">
+                                                                                <td class="text-left">
+                                                                                    <div class="mt-0 mt-sm-2 d-block">
+                                                                                        <span
+                                                                                            class="mb-0 fs-14 fw-semibold">
+                                                                                             {{ order.patient.first_name }} {{ order.patient.last_name}}</span>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="d-flex">
+                                                                        
+                                                                                        <div
+                                                                                            class="ms-3 mt-0 mt-sm-2 d-block">
+                                                                                            <h6
+                                                                                                class="mb-0 fs-14 fw-semibold">
+                                                                                                {{ order.patient.email }}</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="d-flex">
+                                                                                        <div
+                                                                                            class="mt-0 mt-sm-3 d-block">
+                                                                                            <h6
+                                                                                                class="mb-0 fs-14 fw-semibold">
+                                                                                                {{ order.patient.phone }}</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td><span class="mt-sm-2 d-block">Medication Order Form</span></td>
+                                                                                
+                                                                                <td>
+                                                                                     {% if order.order_status == 'Pending' %}
+                                                                                    <span class="tag tag-orange">Pending</span>
+                                                                                     {% elif order.order_status == 'Requested' %}
+                                                                                    <span class="tag tag-red">Requested</span>
+                                                                                     {% elif order.order_status == 'Filled' %}
+                                                                                    <span class="tag tag-green">Filled</span>
+                                                            
+                                                                                     {% endif %}
+                                                                                </td>
+                                                                                
+                                                            
+                                                                                <td>
+                                                                                    <div class="g-2">
+                                                                                        <a data-bs-toggle="modal" data-bs-target="#add-patient-modal" data-bs-whatever="{{ patient.slug }}" class="btn text-primary btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="View Order"><span
+                                                                                                class="fa fa-wpforms fs-14"></span></a>
+                                                                                        <a href="{% url 'edit-patient' order.patient.slug %}" target="blank" class="btn text-primary btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Edit"><span
+                                                                                                class="fe fe-edit fs-14"></span></a>
+                                                                                        <a href="{% url 'delete-patient' order.patient.slug %}" class="btn text-danger btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Delete"><span
+                                                                                                class="fe fe-trash-2 fs-14"></span></a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            {% endfor %}
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane" id="tab6">
+                                                                <div class="table-responsive">
+                                                                    <table id="data-table"
+                                                                        class="table table-bordered text-nowrap mb-0">
+                                                                        <thead class="border-top">
+                                                                            <tr>
+                                                                                <th class="bg-transparent border-bottom-0">Name</th>
+                                                                                <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Email</th>
+                                                                                <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Phone</th>
+                                                                                <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Form</th>
+                                                                                    <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Status</th>
+                                                                                
+                                                                                
+                                                                                <th class="bg-transparent border-bottom-0"
+                                                                                    style="width: 5%;">Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            {% for patient in patients %}
+                                                                            <tr class="border-bottom">
+                                                                                <td class="text-left">
+                                                                                    <div class="mt-0 mt-sm-2 d-block">
+                                                                                        <span
+                                                                                            class="mb-0 fs-14 fw-semibold">
+                                                                                             {{ patient.first_name }} {{ patient.last_name}}</span>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="d-flex">
+                                                                        
+                                                                                        <div
+                                                                                            class="ms-3 mt-0 mt-sm-2 d-block">
+                                                                                            <h6
+                                                                                                class="mb-0 fs-14 fw-semibold">
+                                                                                                {{ patient.email }}</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="d-flex">
+                                                                                        <div
+                                                                                            class="mt-0 mt-sm-3 d-block">
+                                                                                            <h6
+                                                                                                class="mb-0 fs-14 fw-semibold">
+                                                                                                {{ patient.phone }}</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td><span class="mt-sm-2 d-block">Medication Order Form</span></td>
+                                                                                <td><span class="tag tag-red">Open</span></td>
+                                                                                
+                                                            
+                                                                                <td>
+                                                                                    <div class="g-2">
+                                                                                        <a href=" url 'update-company' client.slug %}" class="btn text-primary btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Edit"><span
+                                                                                                class="fe fe-edit fs-14"></span></a>
+                                                                                        <a class="btn text-danger btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Delete"><span
+                                                                                                class="fe fe-trash-2 fs-14"></span></a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            {% endfor %}
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Staff Index End -->
+<!-- add-patient-model -->
+<div class="modal fade" id="add-patient-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">Add Patient</h6>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+                {% csrf_token %}
+                <input type="hidden" name="meal" id="meal-id-hidden" value="0">
+                  <div class="mb-3">
+                    <div class="form-group">
+                        {{ pc_form|crispy }}
+                    </div>
+                  </div>
+               
+              </div>
+            <div class="modal-footer">
+                <button class="btn ripple btn-success" type="submit">Continue</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- send-form-model -->
+<div class="modal fade" id="send-form-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">Send Form to Patient</h6>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+                {% csrf_token %}
+                <input type="hidden" name="meal" id="meal-id-hidden" value="0">
+                  <div class="mb-3">
+                    <div class="form-group">
+                        {{ pc_form|crispy }}
+                    </div>
+                  </div>
+               
+              </div>
+            <div class="modal-footer">
+                <button class="btn ripple btn-success" type="submit">Continue</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

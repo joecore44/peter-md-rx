@@ -3,11 +3,11 @@
 {% load static %}
 {% block content %}
 <div class="page-header">
-    <h1 class="page-title">Edit Profile</h1>
+    <h1 class="page-title">Medication Order - {{ order.order_date }}</h1>
     <div>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Patients</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+            <li class="breadcrumb-item active" aria-current="page">Order</li>
         </ol>
     </div>
 </div>
@@ -88,6 +88,7 @@
                             {% csrf_token %}
                               <div class="mb-3">
                                 <div class="form-group">
+                                    {{ st_form|crispy }}
                                     {{ mo_form|crispy }}
                                 </div>
                               </div>

@@ -1,0 +1,127 @@
+{% extends 'content/staff-base2.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Medication Order - {{ patient.first_name }} {{ patient.last_name }}</h1>
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Medication Order</li>
+        </ol>
+    </div>
+</div>
+<!-- STAFF INDEX PAGE START -->
+
+                        <!-- Staff Index -->
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title mb-0">{{ order.order_date }} {% if patient.status == 'Open' %}
+                                            <span class="tag tag-red">Open</span>
+                                            {% elif patient.status == 'Pending' %}
+                                            <span class="tag tag-orange">Pending</span>
+                                            {% elif patient.status == 'Active' %}
+                                            <span class="tag tag-green">Active</span>
+                                            {% elif patient.status == 'New Submission' %}
+                                            <span class="tag tag-red">New Submission</span>
+                                            {% endif %}</h3>
+                                    </div>
+                                    <div class="card-body pt-4">
+                                        <div class="grid-margin">
+                                            <div class="">
+                                                <div class="panel panel-primary">
+                                                    <div class="tab-menu-heading border-0 p-0">
+                                                        <ul class="nav panel-tabs product-sale">
+                                                            <li>
+                                                                <a href="{% url 'view-patient-form' patient.slug form.slug order.slug %}"><button class="btn btn-outline-info"><i class="fa fa-edit"></i> Edit Order</button></a>
+
+                                                            <li>
+                                                                <li><a href="#tab6" data-bs-toggle="tab"
+                                                                    class="text-dark">&nbsp;</a></li>
+                                                           
+                                                                    
+                                                                    <li><a href="#tab6" data-bs-toggle="tab"
+                                                                        class="text-dark">&nbsp;</a></li>
+                                                            
+                                                        </ul>
+                                                    
+                                                    </div>
+                                                    <div class="panel-body tabs-menu-body border-0 pt-0">
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="tab5">
+                                                                <div class="table-responsive">
+                                                                    <table id="data-table"
+                                                                        class="table table-bordered text-nowrap mb-0">
+                                                                        <thead class="border-top">
+                                                                            <tr>
+                                                                                <th class="bg-transparent border-bottom-0">Qty</th>
+                                                                                <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Drug & Strength</th>
+                                                                                <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Size</th>
+                                                                                <th
+                                                                                    class="bg-transparent border-bottom-0">
+                                                                                    Sig/Instructions</th>
+
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            {% for item in order_items %}
+                                                                            <tr class="border-bottom">
+                                                                                <td class="text-left">
+                                                                                    <div class="mt-0 mt-sm-2 d-block">
+                                                                                        <span
+                                                                                            class="mb-0 fs-14 fw-semibold">
+                                                                                             {{ item.quantity }}</span>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="d-flex">
+                                                                        
+                                                                                        <div
+                                                                                            class="ms-3 mt-0 mt-sm-2 d-block">
+                                                                                            <h6
+                                                                                                class="mb-0 fs-14 fw-semibold">
+                                                                                                {{ item.item }}</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="d-flex">
+                                                                                        <div
+                                                                                            class="mt-0 mt-sm-3 d-block">
+                                                                                            <h6
+                                                                                                class="mb-0 fs-14 fw-semibold">
+                                                                                                {{ item.size }}</h6>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td><span class="mt-sm-2 d-block">{{ item.instructions }}</span></td>
+                                                                                
+                                                                                
+                                                                            </tr>
+                                                                            {% endfor %}
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Staff Index End -->
+
+
+{% endblock content %}

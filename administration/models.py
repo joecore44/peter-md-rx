@@ -7,6 +7,24 @@ class Staff(AbstractUser):
     def __str__(self):
         return self.email
 
+class Provider(models.Model):
+    slug = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    practice_name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255, unique=False)
+    phone = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    zip_code = models.CharField(max_length=255)
+    state_license = models.CharField(max_length=255)
+    npi = models.CharField(max_length=255)
+    dea_number = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.first_name) + ' ' + str(self.last_name)
+
 class PatientProfile(models.Model):
     GENDER_CHOICES = (
         ('Male', 'Male'),
@@ -27,6 +45,7 @@ class PatientProfile(models.Model):
         ('Active', 'Active'),
     )
     slug = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    provider = models.ForeignKey(Provider, on_delete=models.CASCADE, null=True, blank=True)
     status = models.CharField(max_length=255, choices=STATUS_CHOICES, default='Pending')
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -43,7 +62,7 @@ class PatientProfile(models.Model):
     emergency_contact_name = models.CharField(max_length=255, null=True, blank=True)
     emergency_contact_phone = models.CharField(max_length=255, null=True, blank=True)
     emergency_contact_relationship = models.CharField(max_length=255, null=True, blank=True)
-    additional_information = models.TextField(null=True, blank=True)
+    additional_information = models.TextField(null=True, blank=True, verbose_name='Additional Information & Allergies')
 
 class MedicationOrder(models.Model):
     slug = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -69,28 +88,28 @@ class MedicationOrder(models.Model):
     )
     CLOMID_CHOICES = (
         ('0', '0'),
-        ('30 tabs', '30 tabs $75'),
-        ('60 tabs', '60 tabs $145'),
+        ('30', '30 tabs $75'),
+        ('60', '60 tabs $145'),
     )
     MIC_CHOICES = (
         ('0', '0'),
-        ('One Month','One Month: 30 tablets $86.50'),
-        ('Two Months','Two Months: 60 tablets $163.50'),
-        ('Three Months','Three Months: 90 tablets $241.50'),
+        ('30','One Month: 30 tablets $86.50'),
+        ('60','Two Months: 60 tablets $163.50'),
+        ('90','Three Months: 90 tablets $241.50'),
     )
     SILDENAFIL_CHOICES = (
         ('0', '0'),
-        ('10 Tablets','10 Tablets: $62.50'),
-        ('15 Tablets','15 Tablets: $90'),
-        ('20 Tablets','20 Tablets: $120'),
-        ('30 Tablets','30 Tablets: $180'),
+        ('10','10 Tablets: $62.50'),
+        ('15','15 Tablets: $90'),
+        ('20','20 Tablets: $120'),
+        ('30','30 Tablets: $180'),
     )
     TADALAFIL_CHOICES = (
         ('0', '0'),
-        ('10 Tablets','10 Tablets: $72.50'),
-        ('15 Tablets','15 Tablets: $100'),
-        ('20 Tablets','20 Tablets: $140'),
-        ('30 Tablets','30 Tablets: $210'),
+        ('10','10 Tablets: $72.50'),
+        ('15','15 Tablets: $100'),
+        ('20','20 Tablets: $140'),
+        ('30','30 Tablets: $210'),
     )
     ED_MAX_CHOICES = (
         ('0', '0'),
@@ -103,56 +122,56 @@ class MedicationOrder(models.Model):
     )
     FINA_CHOICES = (
         ('0', '0'),
-        ('30 Tablets','30 Tablets: $40'),
-        ('60 Tablets','60 Tablets: $74'),
+        ('30','30 Tablets: $40'),
+        ('60','60 Tablets: $74'),
     )
     DHEA_CHOICES = (
         ('0', '0'),
-        ('10 Tablets','10 Tablets: $40'),
-        ('15 Tablets','15 Tablets: $60'),
-        ('20 Tablets','20 Tablets: $75'),
-        ('30 Tablets','30 Tablets: $113'),
+        ('10','10 Tablets: $40'),
+        ('15','15 Tablets: $60'),
+        ('20','20 Tablets: $75'),
+        ('30','30 Tablets: $113'),
     )
     PREGNELONE_CHOICES = (
         ('0', '0'),
-        ('30 Tablets','30 Tablets: $79'),
-        ('60 Tablets','60 Tablets: $149'),
+        ('30','30 Tablets: $79'),
+        ('60','60 Tablets: $149'),
     )
     SERMORELIN_CHOICES = (
         ('0', '0'),
-        ('1 Month', '1 Month $211.65'),
-        ('2 Month', '2 Month $400'),
-        ('3 Month', '3 Month $598'),
+        ('1', '1 Month $211.65'),
+        ('2', '2 Month $400'),
+        ('3', '3 Month $598'),
     )
     SERMORELINP_CHOICES = (
         ('0', '0'),
-        ('1 Month', '1 Month $183'),
-        ('2 Month', '2 Month $355'),
-        ('3 Month', '3 Month $530'),
+        ('1', '1 Month $183'),
+        ('2', '2 Month $355'),
+        ('3', '3 Month $530'),
     )
     BPC_CHOICES = (
         ('0', '0'),
-        ('1 Month', '1 Month $226'),
-        ('2 Month', '2 Month $400'),
-        ('3 Month', '3 Month $600'),
+        ('1', '1 Month $226'),
+        ('2', '2 Month $400'),
+        ('3', '3 Month $600'),
     )
     BPCC_CHOICES = (
         ('0', '0'),
-        ('1 Month', '1 Month $180'),
-        ('2 Month', '2 Month $348'),
-        ('3 Month', '3 Month $511'),
+        ('1', '1 Month $180'),
+        ('2', '2 Month $348'),
+        ('3', '3 Month $511'),
     )
     MK677_CHOICES = (
         ('0', '0'),
-        ('1 Month', '1 Month $195'),
-        ('2 Month', '2 Month $380'),
-        ('3 Month', '3 Month $570'),
+        ('1', '1 Month $195'),
+        ('2', '2 Month $380'),
+        ('3', '3 Month $570'),
     )
     IPA_CJC_CHOICES = (
         ('0', '0'),
-        ('1 Month', '1 Month $255'),
-        ('2 Month', '2 Month $430'),
-        ('3 Month', '3 Month $635'),
+        ('1', '1 Month $255'),
+        ('2', '2 Month $430'),
+        ('3', '3 Month $635'),
     )
     SYRINGE_CHOICES = (
         ('0', '0'),
@@ -163,7 +182,7 @@ class MedicationOrder(models.Model):
 
 
     testosterone = models.CharField(max_length=255, choices=TEST_CHOICES, default='NA')
-    medical_requests = models.TextField(verbose_name='Comments or Requests')
+    medical_requests = models.TextField(verbose_name='Comments or Requests', null=True, blank=True)
     additional_medication = models.CharField(max_length=255, choices=YES_NO_CHOICES, default='No')
     signature_required = models.CharField(max_length=25, choices=YES_NO_CHOICES, default='No')
     sharps_container = models.CharField(max_length=25, choices=YES_NO_CHOICES, default='No')
@@ -171,6 +190,7 @@ class MedicationOrder(models.Model):
     enclomiphene = models.CharField(max_length=255, choices=CLOMID_CHOICES, default='0')
     hcg_5000 = models.CharField(max_length=25, choices=NUMBER_CHOICES, default='0')
     gonadorelin = models.CharField(max_length=25, choices=NUMBER_CHOICES, default='0')
+    gonadorelin_nasal = models.CharField(max_length=25, choices=NUMBER_CHOICES, default='0', verbose_name='Gonadorelin Nasal Spray')
     semaglutide_l1 = models.CharField(max_length=255, choices=YES_NO_CHOICES, default='No')
     semaglutide_l2 = models.CharField(max_length=255, choices=YES_NO_CHOICES, default='No')
     b12_10ml = models.CharField(max_length=25, choices=NUMBER_CHOICES, default='0')
@@ -210,28 +230,11 @@ class PatientActivity(models.Model):
     def __str__(self):
         return str(self.patient.first_name) + ' ' + str(self.action) + ' ' + str(self.value)
 
-class Provider(models.Model):
-    slug = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    practice_name = models.CharField(max_length=255)
-    email = models.EmailField(max_length=255, unique=True)
-    phone = models.CharField(max_length=255)
-    address = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    state = models.CharField(max_length=255)
-    zip_code = models.CharField(max_length=255)
-    state_license = models.CharField(max_length=255)
-    npi = models.CharField(max_length=255)
-    dea_number = models.CharField(max_length=255)
-
-    def __str__(self):
-        return str(self.first_name) + ' ' + str(self.last_name)
-
 class PatientOrder(models.Model):
     STATUS_CHOICES = (
         ('Pending', 'Pending'),
         ('Filled', 'Filled'),
+        ('Archived', 'Archived'),
         ('Requested', 'Requested'),
 
     )

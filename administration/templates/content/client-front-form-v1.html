@@ -14,7 +14,9 @@
 
                     <p>If you are set up on recurring payments with Peter MD you are a current patient. if you are not a current patient please contact the office at support@peteruncagedmd.com</p>                      
                     <p>PLEASE COMPLETE EVERY FIELD BEFORE SUBMITTING THE FORM TO AVOID ANY DELAYS IN THE REFILL PROCESS.
-                    </p>                    
+                    </p>
+                    <p>&nbsp;</p>
+                    <p><strong>Fill out this questionnaire at your own convenience. Your answers are saved as you go, so you don't need to finish it all in one sitting. Submit the form only when you have answered all that you can.</strong></p>
                 </span> </div> 
                 </div>
             <div class="card">
@@ -29,7 +31,7 @@
                   </div>
                
         <div class="card-footer text-end">
-            <button class="btn ripple btn-success" type="submit">Save</button>
+           
         </div>
             </div>
             
@@ -90,31 +92,6 @@
                   <div class="mb-3">
                     <div class="form-group">
                         {{ medical_request_form|crispy }}
-                    </div>
-                  </div>
-               
-                </div>
-        </div>
-        
-    </form>
-</div>
-
-<div>&nbsp;</div>
-<div class="wrap-login100 p-6">
-    <form class="login100-form validate-form">
-        <div align="left" class="alert alert-default" role="alert"> <span class="alert-inner--icon"></span> <div class="alert-inner--text">
-            <p>DO YOU WANT ADDITIONAL MEDICATION? (we will charge the card on file, please make sure you have the appropriate funds, if the card declines the order process will be delayed).
-            </p>
-            <p>
-                (If the provider does NOT approve you for any of the following medications he will notify the office). PLEASE BE AWARE, ALL PROVIDERS HIGHLY ENCOURAGE GONADORELIN or HCG WHILE ON T THERAPY. GONADORELIN and HCG PREVENT TESTICULAR ATROPHY (SHRINKAGE) AND HELP MAINTAIN FERTILITY, you will find these options below. *
-            </p>                    
-        </div> </div>
-        <div class="card">
-            <div class="body">
-                {% csrf_token %}
-                  <div class="mb-3">
-                    <div class="form-group">
-                        {{ additional_medication_form|crispy }}
                     </div>
                   </div>
                
@@ -278,7 +255,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        {{ testosterone_form|crispy }}
+                        {{ gonadorelin_n_form|crispy }}
                     </div>
                   </div>
                
@@ -932,7 +909,7 @@
                 {% csrf_token %}
                   <div class="mb-3">
                     <div class="form-group">
-                        {{ testosterone_form|crispy }}
+                        {{ syringes_form|crispy }}
                     </div>
                   </div>
                
@@ -1029,6 +1006,422 @@
           .then( response => {
               console.log(response);
           } );
+        };
+    document.getElementById("id_enclomiphene").onchange = function() {
+        var x = document.getElementById("id_enclomiphene").value;
+        fetch( '/api/update/{{ slug }}/enclomiphene/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_signature_required").onchange = function() {
+        var x = document.getElementById("id_signature_required").value;
+        fetch( '/api/update/{{ slug }}/signature_required/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+    document.getElementById("id_sharps_container").onchange = function() {
+        var x = document.getElementById("id_sharps_container").value;
+        fetch( '/api/update/{{ slug }}/sharps_container/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+    document.getElementById("id_alcohol_prep_boxes").onchange = function() {
+        var x = document.getElementById("id_alcohol_prep_boxes").value;
+        fetch( '/api/update/{{ slug }}/alcohol_prep_boxes/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+    document.getElementById("id_alcohol_prep_boxes").onchange = function() {
+        var x = document.getElementById("id_alcohol_prep_boxes").value;
+        fetch( '/api/update/{{ slug }}/alcohol_prep_boxes/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+    document.getElementById("id_enclomiphene").onchange = function() {
+        var x = document.getElementById("id_enclomiphene").value;
+        fetch( '/api/update/{{ slug }}/enclomiphene/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+    document.getElementById("id_hcg_5000").onchange = function() {
+        var x = document.getElementById("id_hcg_5000").value;
+        fetch( '/api/update/{{ slug }}/hcg_5000/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_gonadorelin").onchange = function() {
+        var x = document.getElementById("id_gonadorelin").value;
+        fetch( '/api/update/{{ slug }}/gonadorelin/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_gonadorelin_nasal").onchange = function() {
+        var x = document.getElementById("id_gonadorelin_nasal").value;
+        fetch( '/api/update/{{ slug }}/gonadorelin_nasal/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_semaglutide_l1").onchange = function() {
+        var x = document.getElementById("id_semaglutide_l1").value;
+        fetch( '/api/update/{{ slug }}/semaglutide_l1/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+    document.getElementById("id_semaglutide_l1").onchange = function() {
+        var x = document.getElementById("id_semaglutide_l1").value;
+        fetch( '/api/update/{{ slug }}/semaglutide_l1/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_semaglutide_l2").onchange = function() {
+        var x = document.getElementById("id_semaglutide_l2").value;
+        fetch( '/api/update/{{ slug }}/semaglutide_l2/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_b12_10ml").onchange = function() {
+        var x = document.getElementById("id_b12_10ml").value;
+        fetch( '/api/update/{{ slug }}/b12_10ml/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_mic_oral").onchange = function() {
+        var x = document.getElementById("id_mic_oral").value;
+        fetch( '/api/update/{{ slug }}/mic_oral/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_mic_b12").onchange = function() {
+        var x = document.getElementById("id_mic_b12").value;
+        fetch( '/api/update/{{ slug }}/mic_b12/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_phentermine").onchange = function() {
+        var x = document.getElementById("id_phentermine").value;
+        fetch( '/api/update/{{ slug }}/phentermine/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_sildenafil").onchange = function() {
+        var x = document.getElementById("id_sildenafil").value;
+        fetch( '/api/update/{{ slug }}/sildenafil/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_tadalafil").onchange = function() {
+        var x = document.getElementById("id_tadalafil").value;
+        fetch( '/api/update/{{ slug }}/tadalafil/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_ed_max").onchange = function() {
+        var x = document.getElementById("id_ed_max").value;
+        fetch( '/api/update/{{ slug }}/ed_max/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+    
+    document.getElementById("id_ed_max").onchange = function() {
+        var x = document.getElementById("id_ed_max").value;
+        fetch( '/api/update/{{ slug }}/ed_max/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_finasteride").onchange = function() {
+        var x = document.getElementById("id_finasteride").value;
+        fetch( '/api/update/{{ slug }}/finasteride/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+    
+    document.getElementById("id_hair_loss").onchange = function() {
+        var x = document.getElementById("id_hair_loss").value;
+        fetch( '/api/update/{{ slug }}/hair_loss/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_dhea").onchange = function() {
+        var x = document.getElementById("id_dhea").value;
+        fetch( '/api/update/{{ slug }}/dhea/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+        
+    document.getElementById("id_pregnelone").onchange = function() {
+        var x = document.getElementById("id_pregnelone").value;
+        fetch( '/api/update/{{ slug }}/pregnelone/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+    
+    document.getElementById("id_pregnelone").onchange = function() {
+        var x = document.getElementById("id_pregnelone").value;
+        fetch( '/api/update/{{ slug }}/pregnelone/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+        
+    document.getElementById("id_cabergoline").onchange = function() {
+        var x = document.getElementById("id_cabergoline").value;
+        fetch( '/api/update/{{ slug }}/cabergoline/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+    
+    document.getElementById("id_glutathione").onchange = function() {
+        var x = document.getElementById("id_glutathione").value;
+        fetch( '/api/update/{{ slug }}/glutathione/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_sermorelin").onchange = function() {
+        var x = document.getElementById("id_sermorelin").value;
+        fetch( '/api/update/{{ slug }}/sermorelin/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_sermorelin_p").onchange = function() {
+        var x = document.getElementById("id_sermorelin_p").value;
+        fetch( '/api/update/{{ slug }}/sermorelin_p/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_bpc_157").onchange = function() {
+        var x = document.getElementById("id_bpc_157").value;
+        fetch( '/api/update/{{ slug }}/bpc_157/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_bpc_157_c").onchange = function() {
+        var x = document.getElementById("id_bpc_157_c").value;
+        fetch( '/api/update/{{ slug }}/bpc_157_c/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_mk_677").onchange = function() {
+        var x = document.getElementById("id_mk_677").value;
+        fetch( '/api/update/{{ slug }}/mk_677/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_ipa_cjc").onchange = function() {
+        var x = document.getElementById("id_ipa_cjc").value;
+        fetch( '/api/update/{{ slug }}/ipa_cjc/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_ipa").onchange = function() {
+        var x = document.getElementById("id_ipa").value;
+        fetch( '/api/update/{{ slug }}/ipa/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_modafanil").onchange = function() {
+        var x = document.getElementById("id_modafanil").value;
+        fetch( '/api/update/{{ slug }}/modafanil/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_metformin").onchange = function() {
+        var x = document.getElementById("id_metformin").value;
+        fetch( '/api/update/{{ slug }}/metformin/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_syringes").onchange = function() {
+        var x = document.getElementById("id_syringes").value;
+        fetch( '/api/update/{{ slug }}/syringes/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_expedited_shipping").onchange = function() {
+        var x = document.getElementById("id_expedited_shipping").value;
+        fetch( '/api/update/{{ slug }}/expedited_shipping/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_first_name").onchange = function() {
+        var x = document.getElementById("id_first_name").value;
+        fetch( '/api/update/{{ slug }}/first_name/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_last_name").onchange = function() {
+        var x = document.getElementById("id_last_name").value;
+        fetch( '/api/update/{{ slug }}/last_name/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_email").onchange = function() {
+        var x = document.getElementById("id_email").value;
+        fetch( '/api/update/{{ slug }}/email/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_phone").onchange = function() {
+        var x = document.getElementById("id_phone").value;
+        fetch( '/api/update/{{ slug }}/phone/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_address").onchange = function() {
+        var x = document.getElementById("id_address").value;
+        fetch( '/api/update/{{ slug }}/address/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_city").onchange = function() {
+        var x = document.getElementById("id_city").value;
+        fetch( '/api/update/{{ slug }}/city/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_state").onchange = function() {
+        var x = document.getElementById("id_state").value;
+        fetch( '/api/update/{{ slug }}/state/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_zip_code").onchange = function() {
+        var x = document.getElementById("id_zip_code").value;
+        fetch( '/api/update/{{ slug }}/zip_code/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
+        };
+
+    document.getElementById("id_additional_information").onchange = function() {
+        var x = document.getElementById("id_additional_information").value;
+        fetch( '/api/update/{{ slug }}/additional_information/' + x )
+            .then( response => response.json() )
+            .then( response => {
+                console.log(response);
+            } );
         };
 
     

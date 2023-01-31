@@ -11,7 +11,7 @@ var beautify = require('gulp-beautify');
 //_______ task for scss folder to css main style 
 gulp.task('default', function () {
     console.log('Command executed successfully compiling SCSS in assets.');
-    return gulp.src('/assets/scss/**/*.scss')
+    return gulp.src('assets/scss/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(sourcemaps.write(''))

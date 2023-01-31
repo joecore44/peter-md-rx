@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import Staff, PatientProfile, MedicationOrder
+from .models import Staff, PatientProfile, MedicationOrder, PatientOrder
 
 class StaffCreationForm(UserCreationForm):
 
@@ -19,6 +19,7 @@ class PatientCreateForm(forms.ModelForm):
     class Meta:
         model = PatientProfile
         fields = [
+            'provider',
             'status',
             'first_name',
             'last_name',
@@ -39,8 +40,9 @@ class ExtendedPatientCreateForm(forms.ModelForm):
             'city',
             'state',
             'zip_code',
-
+            'additional_information',
         ]
+        exclude = ('provider','status',)
 
 class PatientUpdateForm(forms.ModelForm):
     
@@ -65,6 +67,14 @@ class MedicationOrderForm(forms.ModelForm):
         model = MedicationOrder
         fields = '__all__'
         exclude = ('patient',)
+        
+class OrderStatusForm(forms.ModelForm):
+    
+    class Meta:
+        model = PatientOrder
+        fields = [
+            'order_status',
+        ]
 
 class TestosteroneForm(forms.ModelForm):
     
@@ -129,6 +139,14 @@ class GonadorelinForm(forms.ModelForm):
             fields = [
                 'gonadorelin',
             ]
+class GonadorelinNForm(forms.ModelForm):
+        
+        class Meta:
+            model = MedicationOrder
+            fields = [
+                'gonadorelin_nasal',
+            ]
+
 class SemaglutideL1Form(forms.ModelForm):
         
         class Meta:
@@ -303,4 +321,11 @@ class ShippingForm(forms.ModelForm):
                 model = MedicationOrder
                 fields = [
                     'expedited_shipping',
+                ]
+class SyringesForm(forms.ModelForm):
+                    
+            class Meta:
+                model = MedicationOrder
+                fields = [
+                    'syringes',
                 ]

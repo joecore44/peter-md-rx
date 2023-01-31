@@ -575,8 +575,8 @@ myCanvas.height = "330";
 
 var myCanvasContext = myCanvas.getContext("2d");
 var gradientStroke1 = myCanvasContext.createLinearGradient(0, 80, 0, 280);
-gradientStroke1.addColorStop(0, 'rgba(108, 95, 252, 0.8)');
-gradientStroke1.addColorStop(1, 'rgba(108, 95, 252, 0.2) ');
+gradientStroke1.addColorStop(0, 'rgba(62, 17, 2, 0.8)');
+gradientStroke1.addColorStop(1, 'rgba(62, 17, 2, 0.2) ');
 
 var gradientStroke2 = myCanvasContext.createLinearGradient(0, 80, 0, 280);
 gradientStroke2.addColorStop(0, 'rgba(5, 195, 251, 0.8)');
@@ -684,8 +684,8 @@ myChart = new Chart(myCanvas, {
 function index(myVarVal, myVarVal1) {
     'use strict'
     let gradientStroke = myCanvasContext.createLinearGradient(0, 80, 0, 280);;
-    gradientStroke.addColorStop(0, `rgba(${myVarVal}, 0.8)` || 'rgba(108, 95, 252, 0.8)');
-    gradientStroke.addColorStop(1, `rgba(${myVarVal}, 0.2)` || 'rgba(108, 95, 252, 0.2) ');
+    gradientStroke.addColorStop(0, `rgba(${myVarVal}, 0.8)` || 'rgba(62, 17, 2, 0.8)');
+    gradientStroke.addColorStop(1, `rgba(${myVarVal}, 0.2)` || 'rgba(62, 17, 2, 0.2) ');
 
     myChart.data.datasets[0] = {
         label: 'Total Sales',
